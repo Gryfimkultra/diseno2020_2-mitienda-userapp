@@ -1,8 +1,8 @@
 package co.edu.eam.disenosoftware.mitienda.repositories;
 
 /**
- * Repository to access stores data
+ * Repository to access orders data
  */
-public class StoresRepository {
+public class OrdersRepository {
 
 }
