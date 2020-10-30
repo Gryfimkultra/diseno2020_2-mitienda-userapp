@@ -15,6 +15,9 @@ public class ErrorResponse {
    */
   private String errorCode;
 
+  public ErrorResponse() {
+  }
+
   /**
    * Constructor
    * @param message error message
