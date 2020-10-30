@@ -141,4 +141,15 @@ public class OrderProduct implements Serializable {
   public void setState(String state) {
     this.state = state;
   }
+
+  @Override
+  public String toString() {
+    return "OrderProduct{" +
+            "id=" + id +
+            ", order=" + order +
+            ", productStore=" + productStore +
+            ", quantity=" + quantity +
+            ", state='" + state + '\'' +
+            '}';
+  }
 }

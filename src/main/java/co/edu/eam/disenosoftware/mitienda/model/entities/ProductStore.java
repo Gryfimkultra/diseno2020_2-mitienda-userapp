@@ -171,4 +171,16 @@ public class ProductStore implements Serializable {
   public void setStore(Store store) {
     this.store = store;
   }
+
+  @Override
+  public String toString() {
+    return "ProductStore{" +
+            "id=" + id +
+            ", product=" + product +
+            ", stock=" + stock +
+            ", price=" + price +
+            ", category=" + category +
+            ", store=" + store +
+            '}';
+  }
 }

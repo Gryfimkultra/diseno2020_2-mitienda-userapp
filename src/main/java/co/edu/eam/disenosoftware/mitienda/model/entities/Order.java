@@ -179,4 +179,17 @@ public class Order implements Serializable {
   public Date getDate() {
     return date;
   }
+
+  @Override
+  public String toString() {
+    return "Order{" +
+            "id=" + id +
+            ", product=" + product +
+            ", store=" + store +
+            ", user=" + user +
+            ", state='" + state + '\'' +
+            ", date=" + date +
+            ", totalValue=" + totalValue +
+            '}';
+  }
 }

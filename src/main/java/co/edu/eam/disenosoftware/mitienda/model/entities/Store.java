@@ -245,6 +245,22 @@ public class Store implements Serializable {
   public void setEmail(String email) {
     this.email = email;
   }
+
+  @Override
+  public String toString() {
+    return "Store{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", owner='" + owner + '\'' +
+            ", address='" + address + '\'' +
+            ", image='" + image + '\'' +
+            ", delivery=" + delivery +
+            ", isOpen=" + isOpen +
+            ", phone='" + phone + '\'' +
+            ", email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            '}';
+  }
 }
 
 
