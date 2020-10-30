@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+
+mainClassName = 'mitienda.userapp.Main'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testImplementation     'junit:junit:4.13'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    compile group: 'com.squareup.retrofit2', name: 'converter-jackson', version: '2.9.0'
+}
