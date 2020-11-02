@@ -2,7 +2,6 @@ package co.edu.eam.disenosoftware.mitienda.webservices;
 
 import retrofit2.Call;
 import retrofit2.http.DELETE;
-import retrofit2.http.PATCH;
 import retrofit2.http.Path;
 
 /**
