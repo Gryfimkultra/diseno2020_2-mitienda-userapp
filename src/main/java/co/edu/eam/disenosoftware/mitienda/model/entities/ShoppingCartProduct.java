@@ -110,4 +110,14 @@ public class ShoppingCartProduct implements Serializable {
   public void setQuantity(int quantity) {
     this.quantity = quantity;
   }
+
+  @Override
+  public String toString() {
+    return "ShoppingCartProduct{" +
+        "id=" + id +
+        ", shoppingCart=" + shoppingCart +
+        ", product=" + product +
+        ", quantity=" + quantity +
+        '}';
+  }
 }
