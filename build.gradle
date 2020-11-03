@@ -5,6 +5,10 @@ apply plugin: 'application'
 
 mainClassName = 'mitienda.userapp.Main'
 
+group = 'co.edu.eam.disenosoftware'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
 repositories {
     jcenter()
 }
