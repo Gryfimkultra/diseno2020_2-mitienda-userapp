@@ -4,6 +4,7 @@ import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
 import co.edu.eam.disenosoftware.mitienda.util.APIErrorHandler;
 import co.edu.eam.disenosoftware.mitienda.util.RetroFitUtils;
 import co.edu.eam.disenosoftware.mitienda.webservices.UserAPIClient;
+import co.edu.eam.disenosoftware.mitienda.model.entities.User;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -26,4 +27,16 @@ public class UserRepository {
 
   }
 
+
+  public void createUser(User user) throws IOException {
+
+    UserAPIClient apiClient = RetroFitUtils.buildAPIClient(UserAPIClient.class);
+    Call<Void>request = apiClient.registerUser(user);
+
+    Response<Void> response = request.execute();
+
+    if (!response.isSuccessful()) {
+      throw APIErrorHandler.throwApiException(response);
+    }
+  }
 }
