@@ -18,8 +18,13 @@ import java.io.IOException;
  */
 public class ShoppingCartRepository {
 
+  /**
+   * delete product from shopping cart
+   * @param idShoppingCart
+   * @param idShoppingCartProduct
+   * @throws IOException
+   */
   public void deleteProductToShoppingCart(Long idShoppingCart, Long idShoppingCartProduct) throws IOException {
-
     ShoppingCartAPIClient apiClient = RetroFitUtils.buildAPIClient(ShoppingCartAPIClient.class);
 
     //Hacer el Request
@@ -30,7 +35,5 @@ public class ShoppingCartRepository {
     if (!response.isSuccessful()) {
       throw APIErrorHandler.throwApiException(response);
     }
-
   }
-
 }

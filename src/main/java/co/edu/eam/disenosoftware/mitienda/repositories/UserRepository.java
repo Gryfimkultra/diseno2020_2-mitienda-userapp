@@ -15,21 +15,30 @@ import java.io.IOException;
  */
 public class UserRepository {
 
-  public void loginUser(UserLoginRequest userLoginRequest) throws IOException {
-
+  /**
+   * login user
+   * @param userLoginRequest
+   * @return
+   * @throws IOException
+   */
+  public User loginUser(UserLoginRequest userLoginRequest) throws IOException {
     UserAPIClient apiClient= RetroFitUtils.buildAPIClient(UserAPIClient.class);
-    Call<Void>request = apiClient.loginUser(userLoginRequest);
-    Response<Void>response=request.execute();
+    Call<User>request = apiClient.loginUser(userLoginRequest);
+    Response<User>response=request.execute();
 
     if(!response.isSuccessful()){
       throw APIErrorHandler.throwApiException(response);
     }
 
+    return response.body();
   }
 
-
+  /**
+   * Create user
+   * @param user
+   * @throws IOException
+   */
   public void createUser(User user) throws IOException {
-
     UserAPIClient apiClient = RetroFitUtils.buildAPIClient(UserAPIClient.class);
     Call<Void>request = apiClient.registerUser(user);
 

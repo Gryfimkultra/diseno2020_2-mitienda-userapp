@@ -9,9 +9,19 @@ import retrofit2.http.Path;
  */
 public interface ShoppingCartAPIClient {
 
+  /**
+   * shopping cart base url
+   */
   public static final String SHOPPING_CART_URL = "/api/shopping-cart";
 
+  /**
+   * delete product from shoppong cart
+   * @param idShoppingCart
+   * @param idShoppingCartProduct
+   * @return
+   */
   @DELETE(SHOPPING_CART_URL + "/{idShoppingCart}/shopping-cart-product/{idShoppingCartProduct}")
-  Call<Void> deleteProductToShoppingCart(@Path("idShoppingCart") Long idShoppingCart, @Path("idShoppingCartProduct") Long idShoppingCartProduct);
+  Call<Void> deleteProductToShoppingCart(@Path("idShoppingCart") Long idShoppingCart,
+                                         @Path("idShoppingCartProduct") Long idShoppingCartProduct);
 
 }

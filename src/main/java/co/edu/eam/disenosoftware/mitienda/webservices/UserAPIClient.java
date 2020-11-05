@@ -19,7 +19,7 @@ public interface UserAPIClient {
    * @param request UserLoginRequest
    */
   @POST(USER_URL + "login")
-  Call<Void> loginUser(@Body UserLoginRequest request);
+  Call<User> loginUser(@Body UserLoginRequest request);
 
   /**
    * User Register - Web Services
