@@ -14,6 +14,10 @@ public interface UserAPIClient {
 
   public static final String USER_URL="/api/users/";
 
+  /**
+   * User login - Web Services
+   * @param request UserLoginRequest
+   */
   @POST(USER_URL + "login")
   Call<Void> loginUser(@Body UserLoginRequest request);
 
@@ -23,5 +27,4 @@ public interface UserAPIClient {
    */
   @POST(USER_URL + "register")
   Call<Void> registerUser(@Body User request);
-
 }
