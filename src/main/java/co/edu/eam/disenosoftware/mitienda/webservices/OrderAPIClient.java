@@ -4,6 +4,7 @@ import co.edu.eam.disenosoftware.mitienda.model.entities.Order;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.POST;
 
 /**
  * Orders api web service client
@@ -23,4 +24,6 @@ public interface OrderAPIClient {
   @GET(ORDER_URL+"{id}")
   Call<Order>  getOrderById(@Path("id") long id);
 
+  @POST(ORDER_URL + "/from-shoppingcart/{idShoppingcart}")
+  Call<Void> createOrder(@Path("idShoppingcart") Long idShoppingcart);
 }
