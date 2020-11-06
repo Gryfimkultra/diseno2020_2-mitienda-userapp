@@ -16,6 +16,11 @@ import java.util.List;
  */
 public class StoresRepository {
 
+  /**
+   * GEt all stores open
+   * @return store list
+   * @throws IOException
+   */
   public List<Store> getAllStoresOpen() throws IOException {
     StoreAPIClient storeAPIClient = RetroFitUtils.buildAPIClient(StoreAPIClient.class);
 
