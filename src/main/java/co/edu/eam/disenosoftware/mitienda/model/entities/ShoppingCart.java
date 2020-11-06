@@ -141,5 +141,14 @@ public class ShoppingCart implements Serializable {
     this.totalValue = totalValue;
   }
 
-
+  @Override
+  public String toString() {
+    return "ShoppingCart{" +
+        "id=" + id +
+        ", store=" + store +
+        ", product=" + product +
+        ", user=" + user +
+        ", totalValue=" + totalValue +
+        '}';
+  }
 }

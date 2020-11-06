@@ -8,6 +8,9 @@ import retrofit2.http.Path;
 
 import java.util.List;
 
+import co.edu.eam.disenosoftware.mitienda.model.entities.ShoppingCart;
+
+
 /**
  * Store api client
  */
@@ -27,4 +30,9 @@ public interface StoreAPIClient {
   @GET(STORES_URL+ "{storeId}/categories")
   Call<List<Category>> getCategoriesByStoreId(@Path("storeId") Long storeId);
 
+
+  public static final String SHOPPINGCART_URL = "/api/stores/";
+
+  @GET(SHOPPINGCART_URL +"{storeId}/users/{userId}/shopping-carts")
+  Call<ShoppingCart> getShoppingCartByUserIdAndStoreId(@Path("storeId") Long storeId, @Path("userId") Long userId);
 }
