@@ -4,15 +4,23 @@ import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.Path;
 
+import co.edu.eam.disenosoftware.mitienda.model.requests.AddShoppingCartProductRequest;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
+
 /**
  * ShoppingCart and ShoppingCartProduct api web service client
  */
 public interface ShoppingCartAPIClient {
-
   /**
    * shopping cart base url
    */
-  public static final String SHOPPING_CART_URL = "/api/shopping-cart";
+  public static final String SHOPPING_CART_URL = "api/shopping-cart/";
+
+  @POST(SHOPPING_CART_URL + "add-product")
+  Call<Void> addProductToShoppingCart(@Body AddShoppingCartProductRequest request);
+
 
   /**
    * delete product from shoppong cart
