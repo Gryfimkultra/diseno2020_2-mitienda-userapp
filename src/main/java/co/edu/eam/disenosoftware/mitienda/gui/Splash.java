@@ -7,7 +7,7 @@ package co.edu.eam.disenosoftware.mitienda.gui;
 
 import co.edu.eam.disenosoftware.mitienda.util.Navigator;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
  *

@@ -7,7 +7,6 @@ import co.edu.eam.disenosoftware.mitienda.webservices.ProductAPIClient;
 import retrofit2.Call;
 import retrofit2.Response;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -24,8 +23,8 @@ public class ProductsRepository {
      */
     public List<Product> getProductByName(String name) throws IOException{
         ProductAPIClient productAPIClient = RetroFitUtils.buildAPIClient(ProductAPIClient.class);
-        Call<List> request = productAPIClient.getProductByName(name);
-        Response <List> response = request.execute();
+        Call<List<Product>> request = productAPIClient.getProductByName(name);
+        Response <List<Product>> response = request.execute();
 
         if(response.isSuccessful()){
             return response.body();

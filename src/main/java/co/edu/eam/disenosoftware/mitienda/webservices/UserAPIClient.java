@@ -1,7 +1,7 @@
 package co.edu.eam.disenosoftware.mitienda.webservices;
 
-import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
 import co.edu.eam.disenosoftware.mitienda.model.entities.User;
+import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

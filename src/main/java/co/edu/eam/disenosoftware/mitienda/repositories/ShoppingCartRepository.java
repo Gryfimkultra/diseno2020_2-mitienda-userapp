@@ -1,17 +1,14 @@
 package co.edu.eam.disenosoftware.mitienda.repositories;
 
 import co.edu.eam.disenosoftware.mitienda.model.entities.ShoppingCart;
-import co.edu.eam.disenosoftware.mitienda.util.APIErrorHandler;
-import co.edu.eam.disenosoftware.mitienda.util.RetroFitUtils;
-import co.edu.eam.disenosoftware.mitienda.webservices.StoreAPIClient;
-import retrofit2.Call;
-import retrofit2.Response;
-import co.edu.eam.disenosoftware.mitienda.exceptions.APIException;
 import co.edu.eam.disenosoftware.mitienda.model.requests.AddShoppingCartProductRequest;
-import co.edu.eam.disenosoftware.mitienda.model.responses.ErrorResponse;
 import co.edu.eam.disenosoftware.mitienda.util.APIErrorHandler;
 import co.edu.eam.disenosoftware.mitienda.util.RetroFitUtils;
 import co.edu.eam.disenosoftware.mitienda.webservices.ShoppingCartAPIClient;
+import co.edu.eam.disenosoftware.mitienda.webservices.StoreAPIClient;
+import retrofit2.Call;
+import retrofit2.Response;
+
 import java.io.IOException;
 
 

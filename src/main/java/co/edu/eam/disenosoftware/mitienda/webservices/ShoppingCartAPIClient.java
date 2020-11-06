@@ -1,13 +1,11 @@
 package co.edu.eam.disenosoftware.mitienda.webservices;
 
-import retrofit2.Call;
-import retrofit2.http.DELETE;
-import retrofit2.http.Path;
-
 import co.edu.eam.disenosoftware.mitienda.model.requests.AddShoppingCartProductRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  * ShoppingCart and ShoppingCartProduct api web service client

@@ -1,14 +1,13 @@
 package co.edu.eam.disenosoftware.mitienda.webservices;
 
 import co.edu.eam.disenosoftware.mitienda.model.entities.Category;
+import co.edu.eam.disenosoftware.mitienda.model.entities.ShoppingCart;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Store;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 import java.util.List;
-
-import co.edu.eam.disenosoftware.mitienda.model.entities.ShoppingCart;
 
 
 /**

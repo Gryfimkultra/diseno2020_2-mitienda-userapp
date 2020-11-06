@@ -1,5 +1,6 @@
 package co.edu.eam.disenosoftware.mitienda.webservices;
 
+import co.edu.eam.disenosoftware.mitienda.model.entities.Product;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -14,5 +15,5 @@ public interface ProductAPIClient {
     public static final String PRODUCT_URL = "/api/products/";
 
     @GET(PRODUCT_URL + "/by-name")
-    Call<List> getProductByName(@Path("name") String name);
+    Call<List<Product>> getProductByName(@Path("name") String name);
 }

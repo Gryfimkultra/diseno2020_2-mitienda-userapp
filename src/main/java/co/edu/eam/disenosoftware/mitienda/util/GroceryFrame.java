@@ -5,9 +5,9 @@
  */
 package co.edu.eam.disenosoftware.mitienda.util;
 
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JFrame;
 
 /**
  * Base frame
