@@ -26,6 +26,12 @@ public abstract class Page extends JFrame {
     private JMenuItem menuHistory;
     private JMenuItem menuBack;
 
+
+    /**
+     * init the page data
+     */
+    public abstract void init() throws Exception;
+
     /**
      * params to send to gui
      */
@@ -36,7 +42,11 @@ public abstract class Page extends JFrame {
      */
     public Page() {
         params = new HashMap<>();
-        buildPage();
+        try {
+            buildPage();
+        }catch (Exception exc) {
+            exc.printStackTrace();
+        }
     }
 
     /**
@@ -51,25 +61,26 @@ public abstract class Page extends JFrame {
      * abstract methdo to implement conten of the page
      * @return component to render in the center of the page
      */
-    public abstract JComponent buildContent();
+    public abstract JComponent buildContent() throws Exception;
 
     /**
      * abstract methdo to implement header of the page
      * @return component to render in the header of the page
      */
-    public abstract JComponent buildHeader();
+    public abstract JComponent buildHeader() throws Exception;
 
     /**
      * abstract methdo to implement footer of the page
      * @return component to render in the footer of the page
      */
-    public abstract JComponent buildFooter();
+    public abstract JComponent buildFooter() throws Exception;
 
     /**
      * Method to build the whole page
      */
-    private void buildPage() {
+    private void buildPage() throws Exception {
         buildMenu();
+        init();
         JComponent content = buildContent();
         JComponent header  = buildHeader();
         JComponent footer  = buildFooter();

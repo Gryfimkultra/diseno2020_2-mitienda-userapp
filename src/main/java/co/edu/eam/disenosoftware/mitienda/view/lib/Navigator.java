@@ -41,7 +41,7 @@ public class Navigator {
     /**
      * base pacakage of the frames
      */
-    public static String GUI_PACKAGE =  "co.edu.eam.disenosoftware.mitienda.gui.pages";
+    public static String GUI_PACKAGE =  "co.edu.eam.disenosoftware.mitienda.view.pages";
     
     
     /**
@@ -99,7 +99,7 @@ public class Navigator {
     public static Page goToFrame(String frame, Map<String, Object> params) {
         
         try {
-            return goToFrame(frame, new HashMap<>(), false);
+            return goToFrame(frame, params, false);
         } catch (Exception ex) {
             Logger.getLogger(Navigator.class.getName()).log(Level.SEVERE, null, ex);
         }
