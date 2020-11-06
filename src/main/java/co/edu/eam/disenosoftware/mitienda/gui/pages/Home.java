@@ -3,21 +3,72 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.eam.disenosoftware.mitienda.gui;
+package co.edu.eam.disenosoftware.mitienda.gui.pages;
 
-import co.edu.eam.disenosoftware.mitienda.util.GroceryFrame;
+import co.edu.eam.disenosoftware.mitienda.gui.lib.ListView;
+import co.edu.eam.disenosoftware.mitienda.gui.lib.Page;
+
+import javax.swing.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
  * @author caferrerb
  */
-public class Home extends GroceryFrame {
+public class Home extends Page {
 
     /**
      * Creates new form Home
      */
     public Home() {
         super();
+    }
+
+    @Override
+    public JComponent buildContent() {
+
+        List<JComponent> list = Arrays.asList(
+                new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),  new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),  new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),  new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),
+                new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),  new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),  new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),  new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),
+                new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),  new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),  new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres"),  new JLabel("uno"),
+                new JButton("dos"),
+                new JTextField("tres")
+        );
+
+        return new ListView<JComponent>(list);
+    }
+
+    @Override
+    public JComponent buildHeader() {
+        return new JLabel("Home");
+    }
+
+    @Override
+    public JComponent buildFooter() {
+        return new JTextField("aja");
     }
 
     /**
@@ -29,16 +80,16 @@ public class Home extends GroceryFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -55,9 +106,9 @@ public class Home extends GroceryFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -67,7 +118,7 @@ public class Home extends GroceryFrame {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

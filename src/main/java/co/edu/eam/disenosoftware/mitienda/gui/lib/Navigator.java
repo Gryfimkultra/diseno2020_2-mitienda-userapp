@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.eam.disenosoftware.mitienda.util;
+package co.edu.eam.disenosoftware.mitienda.gui.lib;
 
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class Navigator {
     /**
      * base pacakage of the frames
      */
-    public static String GUI_PACKAGE =  "co.edu.eam.disenosoftware.mitienda.userapp.gui";
+    public static String GUI_PACKAGE =  "co.edu.eam.disenosoftware.mitienda.gui.pages";
     
     
     /**
@@ -50,13 +50,13 @@ public class Navigator {
      * @param params params to send
      * @return frame
      */
-    public static GroceryFrame goToFrame(String frame, Map<String, Object> params, boolean fromBack) {
+    public static Page goToFrame(String frame, Map<String, Object> params, boolean fromBack) {
         
         try {
             Constructor ctor =  Class.forName(GUI_PACKAGE + "." + frame).getDeclaredConstructor();
             ctor.setAccessible(true);
             
-            GroceryFrame gFrame = (GroceryFrame) ctor.newInstance();
+            Page gFrame = (Page) ctor.newInstance();
             gFrame.setVisible(true);
             gFrame.setTitle(frame);            
             gFrame.setParams(params);
@@ -81,7 +81,7 @@ public class Navigator {
      * @param frame frame name
      * @return frame
      */
-    public static GroceryFrame goToFrame(String frame) {
+    public static Page goToFrame(String frame) {
         
         try {
             return goToFrame(frame, new HashMap<>(), false);
@@ -96,7 +96,7 @@ public class Navigator {
      * @param frame frame name
      * @return frame
      */
-    public static GroceryFrame goToFrame(String frame,  Map<String, Object> params) {
+    public static Page goToFrame(String frame, Map<String, Object> params) {
         
         try {
             return goToFrame(frame, new HashMap<>(), false);
@@ -111,7 +111,7 @@ public class Navigator {
      * Go Back
      * @return frame 
      */
-    public static GroceryFrame goBack() {
+    public static Page goBack() {
         try{
             String frame = previousFrames.pop();
 
