@@ -15,6 +15,13 @@ public class Constants {
   /**
    * oficcial green
    */
-  private static final Color COLOR_GREEN = new Color(122,191,181);
+  public static final Color COLOR_GREEN = new Color(122,191,181);
+
+
+  /**
+   * Title Font
+   */
+  public static final Font TITLE_FONT = new Font ("TimesRoman", Font.BOLD | Font.ITALIC, 20);
+
 
 }
