@@ -61,8 +61,6 @@ public class StoresOpenPage extends Page {
       panlerStores.add(wdgt);
     }
 
-    
-
     panlerStores.setBackground(Color.white);
 
     return new JScrollPane(panlerStores);
