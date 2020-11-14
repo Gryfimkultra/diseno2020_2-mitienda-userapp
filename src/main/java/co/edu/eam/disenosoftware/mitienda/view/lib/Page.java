@@ -104,6 +104,16 @@ public abstract class Page extends JFrame {
         setResizable(false);
     }
 
+    /**
+     * refresh page
+     * @throws Exception
+     */
+    public void refresh() throws Exception {
+        getContentPane().removeAll();
+        getContentPane().repaint();
+
+        buildPage();
+    }
 
     /**
      * Build the app menu
