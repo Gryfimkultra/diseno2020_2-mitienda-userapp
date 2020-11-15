@@ -20,15 +20,8 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         // TODO code application logic here
-
-        Map<String, Object> params = new HashMap<>();
-        params.put("orderId", 13l);
-
-        LocalStorage.saveData("orderId", 13l);
-
-        Navigator.goToFrame("OrderDetailPage",params);
     }
     
 }
