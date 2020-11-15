@@ -23,14 +23,6 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        Map<String, Object> params = new HashMap<>();
-        params.put("storeId", 3l);
-
-        LocalStorage.saveData("userId", 1l);
-
-        LocalStorage.saveData("storeId", 3l);
-
-        Navigator.goToFrame("StoreHomePage",params);
     }
     
 }
