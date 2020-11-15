@@ -22,13 +22,12 @@ public class Main {
      */
      public static void main(String[] args) {
         // TODO code application logic here
+       Map<String, Object> params = new HashMap<>();
+       params.put("orderId", 13l);
 
-        Map<String, Object> params = new HashMap<>();
-        params.put("orderId", 13l);
+       LocalStorage.saveData("orderId", 13l);
 
-        LocalStorage.saveData("orderId", 13l);
-
-        Navigator.goToFrame("OrderDetailPage",params);
-    }
+       Navigator.goToFrame("OrderDetailPage",params);
+     }
     
 }

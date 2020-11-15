@@ -3,15 +3,23 @@ package co.edu.eam.disenosoftware.mitienda.view.widgets;
 import co.edu.eam.disenosoftware.mitienda.config.Constants;
 import co.edu.eam.disenosoftware.mitienda.model.entities.ProductStore;
 import co.edu.eam.disenosoftware.mitienda.util.ImageUtil;
+import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
+import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
+import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Widget;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StoreHomeProductWidget extends Widget<ProductStore> {
 
-  public StoreHomeProductWidget(ProductStore data) {
+  Page page;
+
+  public StoreHomeProductWidget(ProductStore data, Page page) {
     super(data);
+    this.page = page;
   }
 
   @Override
@@ -50,7 +58,23 @@ public class StoreHomeProductWidget extends Widget<ProductStore> {
     productInfo.add(productImage);
     productInfo.add(productDetailInfo);
     productInfo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    productInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        agregarShoppingCart();
+      }
+    });
     this.add(productInfo);
 
   }
+
+  public void agregarShoppingCart(){
+    Map<String, Object> params = new HashMap<>();
+    params.put("product", data);
+
+    LocalStorage.saveData("productStore", data);
+
+    Navigator.goToFrame("ShoppingCartAddProductPage",params);
+    page.dispose();
+  }
+
 }

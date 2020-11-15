@@ -2,7 +2,6 @@ package co.edu.eam.disenosoftware.mitienda.view.pages;
 
 import co.edu.eam.disenosoftware.mitienda.config.Constants;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Category;
-import co.edu.eam.disenosoftware.mitienda.model.entities.OrderProduct;
 import co.edu.eam.disenosoftware.mitienda.model.entities.ProductStore;
 import co.edu.eam.disenosoftware.mitienda.util.ImageUtil;
 import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
@@ -10,12 +9,10 @@ import co.edu.eam.disenosoftware.mitienda.view.controllers.StoreHomeController;
 import co.edu.eam.disenosoftware.mitienda.view.lib.ListView;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
-import co.edu.eam.disenosoftware.mitienda.view.widgets.OrderProductDetailWidget;
 import co.edu.eam.disenosoftware.mitienda.view.widgets.StoreHomeCategoriesWidget;
 import co.edu.eam.disenosoftware.mitienda.view.widgets.StoreHomeProductWidget;
 
 import javax.swing.*;
-import javax.swing.plaf.ScrollPaneUI;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +24,6 @@ public class StoreHomePage extends Page {
   private StoreHomeController controller;
   List<Category> categories;
   List<ProductStore> productStores;
-  Long[] ids;
   Long searchCategory;
 
   @Override
@@ -37,8 +33,7 @@ public class StoreHomePage extends Page {
 
     searchCategory = LocalStorage.getData("searchCategory", Long.class);
 
-    ids = LocalStorage.getData("categoryId", Long[].class);
-    Long storeId = ids[0];
+    Long storeId =  LocalStorage.getData("storeId", Long.class);
 
     this.categories = controller.getStoreCategories(storeId);
     this.productStores = controller.getProductsStore(storeId);
@@ -61,7 +56,7 @@ public class StoreHomePage extends Page {
     categoriesPanel.setBackground(Color.WHITE);
 
     for (Category category: categories){
-      StoreHomeCategoriesWidget widget = new StoreHomeCategoriesWidget(category);
+      StoreHomeCategoriesWidget widget = new StoreHomeCategoriesWidget(category, this);
       categoriesPanel.add(widget);
     }
 
@@ -86,7 +81,7 @@ public class StoreHomePage extends Page {
 
         for (ProductStore productStore : productStores) {
           if (productStore.getCategory().getId().equals(category.getId())) {
-            StoreHomeProductWidget widget = new StoreHomeProductWidget(productStore);
+            StoreHomeProductWidget widget = new StoreHomeProductWidget(productStore, this);
             productWidgetsHorizontal.add(widget);
           }
         }
@@ -112,7 +107,7 @@ public class StoreHomePage extends Page {
 
         for (ProductStore productStore : productStores) {
           if (productStore.getCategory().getId().equals(searchCategory)) {
-            StoreHomeProductWidget widget = new StoreHomeProductWidget(productStore);
+            StoreHomeProductWidget widget = new StoreHomeProductWidget(productStore, this);
             productWidgetsHorizontal.add(widget);
           }
         }
@@ -124,7 +119,9 @@ public class StoreHomePage extends Page {
       containerPanel.add(listView);
 
     }
-
+    containerPanel.setBackground(Color.WHITE);
+    containerPanel.setPreferredSize(new Dimension(500, containerPanel.getPreferredSize().height));
+    containerPanel.setMaximumSize(new Dimension(500, 800));
     return containerPanel;
   }
 
@@ -141,7 +138,12 @@ public class StoreHomePage extends Page {
     label.setCursor(new Cursor(Cursor.HAND_CURSOR));
     label.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
-        refresh(1l);
+        LocalStorage.saveData("searchCategory", null);
+        try {
+          refresh();
+        }catch (Exception e){
+          e.printStackTrace();
+        }
       }
     });
 
@@ -167,22 +169,15 @@ public class StoreHomePage extends Page {
   public void shoppingCart (Long storeId){
 
     Map<String, Object> params = new HashMap<>();
-    params.put("id", ids);
+    params.put("storeId", productStores.get(0).getStore().getId());
 
-    LocalStorage.saveData("id", ids);
+    LocalStorage.saveData("storeId", productStores.get(0).getStore().getId());
 
     Navigator.goToFrame("ShoppingCartPage",params);
   }
 
-  public void refresh (Long category) {
-
-    Map<String, Object> params = new HashMap<>();
-    params.put("categoryId", ids);
-
-    LocalStorage.saveData("searchCategory", null);
-
-    Navigator.goToFrame("StoreHomePage",params);
-
-    this.dispose();
+  @Override
+  public void refresh() throws Exception {
+    super.refresh();
   }
 }
