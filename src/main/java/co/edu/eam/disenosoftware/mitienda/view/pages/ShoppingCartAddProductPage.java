@@ -177,6 +177,5 @@ public class ShoppingCartAddProductPage extends Page {
 
   public void returnStore(){
     Navigator.goToFrame("StoreHomePage");
-    this.dispose();
   }
 }
