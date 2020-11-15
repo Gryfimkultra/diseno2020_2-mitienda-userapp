@@ -30,9 +30,8 @@ public class ShoppingCartPage extends Page {
   public void init() throws Exception {
     controller=new ShoppingCartController();
     orderController=new OrderDetailController();
-    Long ids[]=LocalStorage.getData("shoppingCardId",Long[].class);
-    Long storeId=ids[0];
-    Long userId=ids[1];
+    Long storeId=LocalStorage.getData("storeId",Long.class);
+    Long userId=LocalStorage.getData("userId",Long.class);
 
     this.shoppingCart=controller.getShoppingCard(storeId,userId);
     System.out.println(shoppingCart.getId());
@@ -152,6 +151,8 @@ public class ShoppingCartPage extends Page {
         }
       }
     });
+    panelBuyNow.setPreferredSize(new Dimension(panelBuyNow.getPreferredSize().width,50));
+    panelBuyNow.setMaximumSize(new Dimension(500,50));
    return  panelBuyNow;
   }
   @Override
