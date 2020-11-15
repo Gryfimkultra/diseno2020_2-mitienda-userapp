@@ -68,7 +68,6 @@ public class StoresOpenWidget extends Widget<Store> {
     lblPhone.setFont(new Font("", Font.ITALIC, 12));
 
     this.setBackground(new Color(255, 255, 255));
-    //this.setBorder(BorderFactory.createMatteBorder(10, 5, 10, 5, new Color(204, 204, 204)));
 
     this.addMouseListener(new MouseAdapter() {
       @Override
@@ -76,7 +75,6 @@ public class StoresOpenWidget extends Widget<Store> {
         super.mouseClicked(e);
         Map<String, Object> params = new HashMap<>();
         params.put("storeId", (Long) data.getId());
-        System.out.println(params);
         Navigator.goToFrame("StoreHomePage",params);
       }
     });

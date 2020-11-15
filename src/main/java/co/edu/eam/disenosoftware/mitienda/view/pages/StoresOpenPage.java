@@ -41,16 +41,9 @@ public class StoresOpenPage extends Page {
 
     List<Store> stores = controller.getOpenStores();
 
-    for (Store store : stores) {
-      System.out.println(store.getName());
-    }
-
     List<StoresOpenWidget> storesWidgets = new ArrayList<>();
 
     JPanel panlerStores = new JPanel();
-    System.out.println(stores.size());
-
-    //panlerStores.setLayout(new GridLayout((int) Math.ceil(stores.size()/2.0), 2 ));
 
     panlerStores.setLayout(new GridLayout(stores.size(), 1 ));
 
