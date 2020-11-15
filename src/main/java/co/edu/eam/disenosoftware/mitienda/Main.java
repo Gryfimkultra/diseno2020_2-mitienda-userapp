@@ -5,12 +5,6 @@
  */
 package co.edu.eam.disenosoftware.mitienda;
 
-import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
-import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
-
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  *
  * @author caferrerb
@@ -20,15 +14,8 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         // TODO code application logic here
-
-        Map<String, Object> params = new HashMap<>();
-        params.put("orderId", 13l);
-
-        LocalStorage.saveData("orderId", 13l);
-
-        Navigator.goToFrame("OrderDetailPage",params);
     }
     
 }
