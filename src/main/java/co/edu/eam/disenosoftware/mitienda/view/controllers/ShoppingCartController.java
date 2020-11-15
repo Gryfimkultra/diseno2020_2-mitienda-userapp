@@ -1,6 +1,7 @@
 package co.edu.eam.disenosoftware.mitienda.view.controllers;
 
 import co.edu.eam.disenosoftware.mitienda.model.entities.ShoppingCart;
+import co.edu.eam.disenosoftware.mitienda.repositories.OrdersRepository;
 import co.edu.eam.disenosoftware.mitienda.repositories.ShoppingCartRepository;
 
 import java.io.IOException;
@@ -11,6 +12,7 @@ public class ShoppingCartController {
    * ShoppingCard Repository
    */
   private ShoppingCartRepository shoppingCartRepository;
+  private OrdersRepository ordersRepository;
 
   public ShoppingCartController(){
     shoppingCartRepository=new ShoppingCartRepository();
@@ -32,9 +34,7 @@ public class ShoppingCartController {
     shoppingCartRepository.deleteProductToShoppingCart(idShoppingCart,idShoppingCartProduct);
 
   }
-
-  public void createOrder(Long idShoppingcart){
-
-
+  public void createOrden(Long idShoppingcart) throws IOException {
+    ordersRepository.createOrder(idShoppingcart);
   }
 }

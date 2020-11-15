@@ -19,7 +19,6 @@ import java.util.Map;
 public class ShoppingCartPage extends Page {
 
   private ShoppingCartController controller;
-  private OrderDetailController orderController;
   private ShoppingCart shoppingCart;
 
   public ShoppingCartPage(){
@@ -29,7 +28,6 @@ public class ShoppingCartPage extends Page {
   @Override
   public void init() throws Exception {
     controller=new ShoppingCartController();
-    orderController=new OrderDetailController();
     Long storeId=LocalStorage.getData("storeId",Long.class);
     Long userId=LocalStorage.getData("userId",Long.class);
 
@@ -55,16 +53,9 @@ public class ShoppingCartPage extends Page {
         System.out.println("Empty");
       }
 
-
     }
-
     panelFlowScrollProduct.add(panelGridScrollProduct);
-
-    //scrollProduct.setViewportView(panelProduct);
-
     JScrollPane scrollPane=new JScrollPane(panelFlowScrollProduct);
-
-
 
     return scrollPane;
   }
@@ -140,7 +131,7 @@ public class ShoppingCartPage extends Page {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
 
         try {
-          orderController.createOrden(shoppingCart.getId());
+          controller.createOrden(shoppingCart.getId());
 
           Map<String, Object> params = new HashMap<>();
 

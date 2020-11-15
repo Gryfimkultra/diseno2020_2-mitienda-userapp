@@ -29,9 +29,4 @@ public class OrderDetailController {
 
     return ordersRepository.getOrderById(id);
   }
-
-  public void createOrden(Long idShoppingcart) throws IOException {
-    ordersRepository.createOrder(idShoppingcart);
-
-  }
 }
