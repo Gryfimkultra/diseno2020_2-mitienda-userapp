@@ -2,6 +2,8 @@ package co.edu.eam.disenosoftware.mitienda.config;
 
 import java.awt.*;
 
+import java.awt.*;
+
 /**
  * Generic constants
  */
@@ -24,4 +26,6 @@ public class Constants {
   public static final Font TITLE_FONT = new Font ("TimesRoman", Font.BOLD | Font.ITALIC, 20);
 
 
+
+  public static final String STORE_IMAGE_URL = "https://raw.githubusercontent.com/eamquindio/mitiendacdn/main/images/stores/";
 }

@@ -1,5 +1,6 @@
 package co.edu.eam.disenosoftware.mitienda.view.pages;
 
+import co.edu.eam.disenosoftware.mitienda.config.Constants;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Order;
 import co.edu.eam.disenosoftware.mitienda.model.entities.OrderProduct;
 import co.edu.eam.disenosoftware.mitienda.model.entities.ProductStore;
@@ -73,7 +74,7 @@ public class OrderDetailPage extends Page {
   public JComponent buildHeader() throws Exception {
     JPanel panel = new JPanel();
     panel.setLayout(new GridLayout(1,1));
-    panel.setBackground(Color.GREEN);
+    panel.setBackground(Constants.COLOR_GREEN);
 
     JLabel label = new JLabel("<html><center><b>"+"Order:" + order.getId() + "</b></center></html>");
     label.setPreferredSize(new Dimension(panel.getPreferredSize().width,120));
