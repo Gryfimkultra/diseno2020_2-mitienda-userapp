@@ -38,6 +38,11 @@ public class RegisterUserPage extends Page {
     JPasswordField password = new JPasswordField("");
     password.setBorder(null);
 
+    TextPrompt placeUser = new TextPrompt("User Name", userName);
+    TextPrompt placePassword = new TextPrompt("Password", password);
+    TextPrompt placePhone = new TextPrompt("Phone", phone);
+    TextPrompt placeEmail = new TextPrompt("Email Address", emailAddress);
+
     JSeparator line1 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line2 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line3 = new JSeparator(SwingConstants.HORIZONTAL);

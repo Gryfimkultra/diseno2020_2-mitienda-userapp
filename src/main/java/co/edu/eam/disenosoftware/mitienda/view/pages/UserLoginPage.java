@@ -4,6 +4,7 @@ import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
 import co.edu.eam.disenosoftware.mitienda.view.controllers.UserLoginController;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
+import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,6 +36,8 @@ public class UserLoginPage extends Page {
     JPasswordField password = new JPasswordField("");
     password.setBorder(null);
 
+    TextPrompt placeUser = new TextPrompt("User Name", userName);
+    TextPrompt placePassword = new TextPrompt("Password", password);
     JSeparator line1 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line2 = new JSeparator(SwingConstants.HORIZONTAL);
 
