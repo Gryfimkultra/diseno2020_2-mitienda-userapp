@@ -3,7 +3,6 @@ package co.edu.eam.disenosoftware.mitienda.view.pages;
 import co.edu.eam.disenosoftware.mitienda.config.Constants;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Store;
 import co.edu.eam.disenosoftware.mitienda.view.controllers.StoresOpenController;
-import co.edu.eam.disenosoftware.mitienda.view.lib.ListView;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.widgets.StoresOpenWidget;
 
@@ -51,10 +50,9 @@ public class StoresOpenPage extends Page {
     JPanel panlerStores = new JPanel();
     System.out.println(stores.size());
 
-    double cantidad = stores.size()/2;
-    System.out.println("cantidad normal "+cantidad);
-    System.out.println("cantidad con math.ceil : "+Math.ceil(cantidad));
-    panlerStores.setLayout(new GridLayout(5, 2 ));
+    //panlerStores.setLayout(new GridLayout((int) Math.ceil(stores.size()/2.0), 2 ));
+
+    panlerStores.setLayout(new GridLayout(stores.size(), 1 ));
 
     for (Store store : stores) {
       StoresOpenWidget wdgt = new StoresOpenWidget(store);
@@ -74,11 +72,13 @@ public class StoresOpenPage extends Page {
     panelHeader.setBackground(Constants.COLOR_GREEN);
 
     JLabel label = new JLabel("Tus tiendas cercanas");
-    label.setFont(Constants.TITLE_FONT);
-    label.setPreferredSize(new Dimension(panelHeader.getPreferredSize().width,120));
+    label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 20));
+    label.setBorder(BorderFactory.createEmptyBorder(10,10,5,10));
+    label.setPreferredSize(new Dimension(panelHeader.getPreferredSize().width,50));
     label.setAlignmentX(0.5f);
+    label.setForeground(Color.WHITE);
 
-    panelHeader.add(label);
+    panelHeader.add(label,CENTER_ALIGNMENT);
     return panelHeader;
   }
 
