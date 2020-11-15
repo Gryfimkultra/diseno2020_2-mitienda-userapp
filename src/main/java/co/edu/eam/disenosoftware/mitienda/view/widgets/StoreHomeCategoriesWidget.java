@@ -4,18 +4,19 @@ import co.edu.eam.disenosoftware.mitienda.config.Constants;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Category;
 import co.edu.eam.disenosoftware.mitienda.util.ImageUtil;
 import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
-import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
+import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Widget;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.util.HashMap;
-import java.util.Map;
 
 public class StoreHomeCategoriesWidget extends Widget<Category> {
-  public StoreHomeCategoriesWidget(Category data) {
+
+  Page page;
+
+  public StoreHomeCategoriesWidget(Category data, Page page) {
     super(data);
+    this.page = page;
   }
 
   @Override
@@ -45,14 +46,12 @@ public class StoreHomeCategoriesWidget extends Widget<Category> {
 
   public void category(Long id){
 
-    Long[] ids = LocalStorage.getData("categoryId", Long[].class);
-
-    Map<String, Object> params = new HashMap<>();
-    params.put("categoryId", ids);
-
     LocalStorage.saveData("searchCategory", id);
-
-    Navigator.goToFrame("StoreHomePage",params);
+    try {
+      page.refresh();
+    }catch (Exception e){
+      e.printStackTrace();
+    }
 
   }
 }

@@ -23,14 +23,12 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        Long[] ids = new Long[2];
-        ids[0] =  3l;
-        ids[1] = 1l;
-
         Map<String, Object> params = new HashMap<>();
-        params.put("categoryId", ids);
+        params.put("storeId", 3l);
 
-        LocalStorage.saveData("categoryId", ids);
+        LocalStorage.saveData("userId", 1l);
+
+        LocalStorage.saveData("storeId", 3l);
 
         Navigator.goToFrame("StoreHomePage",params);
     }
