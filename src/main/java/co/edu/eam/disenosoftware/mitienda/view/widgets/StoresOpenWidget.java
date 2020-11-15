@@ -77,7 +77,7 @@ public class StoresOpenWidget extends Widget<Store> {
         Map<String, Object> params = new HashMap<>();
         params.put("storeId", (Long) data.getId());
         System.out.println(params);
-        //Navigator.goToFrame("ProductsStorePage",params);
+        Navigator.goToFrame("StoreHomePage",params);
       }
     });
 
