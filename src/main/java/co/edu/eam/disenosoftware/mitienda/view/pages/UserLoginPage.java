@@ -4,7 +4,7 @@ import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
 import co.edu.eam.disenosoftware.mitienda.view.controllers.UserLoginController;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
-import org.w3c.dom.Text;
+import co.edu.eam.disenosoftware.mitienda.view.widgets.TextPrompt;
 
 import javax.swing.*;
 import java.awt.*;

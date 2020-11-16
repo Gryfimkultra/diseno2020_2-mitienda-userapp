@@ -2,6 +2,7 @@ package co.edu.eam.disenosoftware.mitienda.view.controllers;
 
 import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
 import co.edu.eam.disenosoftware.mitienda.repositories.UserRepository;
+import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
 
 import java.io.IOException;
 
@@ -22,8 +23,13 @@ public class UserLoginController {
    userRepository = new UserRepository();
   }
 
+  /**
+   * User Login
+   * @param userLoginRequest request
+   * @throws IOException
+   */
   public void userLogin(UserLoginRequest userLoginRequest) throws IOException {
-    userRepository = new UserRepository();
+    LocalStorage.saveData("user", userLoginRequest);
 
     userRepository.loginUser(userLoginRequest);
   }

@@ -1,4 +1,4 @@
-package co.edu.eam.disenosoftware.mitienda.view.pages;
+package co.edu.eam.disenosoftware.mitienda.view.widgets;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
