@@ -1,5 +1,6 @@
 package co.edu.eam.disenosoftware.mitienda.view.controllers;
 
+import co.edu.eam.disenosoftware.mitienda.model.entities.User;
 import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
 import co.edu.eam.disenosoftware.mitienda.repositories.UserRepository;
 import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
@@ -28,10 +29,11 @@ public class UserLoginController {
    * @param userLoginRequest request
    * @throws IOException
    */
-  public void userLogin(UserLoginRequest userLoginRequest) throws IOException {
-    LocalStorage.saveData("user", userLoginRequest);
+  public User userLogin(UserLoginRequest userLoginRequest) throws IOException {
 
-    userRepository.loginUser(userLoginRequest);
+    User user = userRepository.loginUser(userLoginRequest);
+
+    return user;
   }
 
 
