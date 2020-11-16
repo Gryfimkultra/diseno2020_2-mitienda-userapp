@@ -23,5 +23,8 @@ public class Constants {
    */
   public static final Font TITLE_FONT = new Font ("TimesRoman", Font.BOLD | Font.ITALIC, 20);
 
-
+  /**
+   * images Stores
+   */
+  public static final String STORE_IMAGE_URL = "https://raw.githubusercontent.com/eamquindio/mitiendacdn/main/images/stores/";
 }
