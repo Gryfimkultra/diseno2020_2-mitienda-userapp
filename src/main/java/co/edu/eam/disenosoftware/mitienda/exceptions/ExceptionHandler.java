@@ -29,5 +29,7 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
     } else {
       JOptionPane.showMessageDialog(null, message, "General Error", JOptionPane.ERROR_MESSAGE);
     }
+
+    t.printStackTrace();
   }
 }

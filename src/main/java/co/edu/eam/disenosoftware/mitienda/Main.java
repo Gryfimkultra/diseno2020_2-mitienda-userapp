@@ -6,6 +6,7 @@
 package co.edu.eam.disenosoftware.mitienda;
 
 import co.edu.eam.disenosoftware.mitienda.exceptions.ExceptionHandler;
+import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
 
 /**
@@ -20,7 +21,10 @@ public class Main {
 
     Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler());
 
-    Navigator.goToFrame("UserLoginPage");
+    LocalStorage.saveData("storeId", 3l);
+    LocalStorage.saveData("userId", 3l);
+
+    Navigator.goToFrame("StoreHomePage");
   }
 
 }
