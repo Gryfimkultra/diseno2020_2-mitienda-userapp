@@ -60,6 +60,20 @@ public class User implements Serializable {
   }
 
   /**
+   * Users constructor
+   * @param username
+   * @param phone
+   * @param email
+   * @param password
+   */
+  public User(String username, String phone, String email, String password) {
+    this.username = username;
+    this.phone = phone;
+    this.email = email;
+    this.password = password;
+  }
+
+  /**
    * get id
    *
    * @return id
