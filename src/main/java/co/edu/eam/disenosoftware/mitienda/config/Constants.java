@@ -15,6 +15,12 @@ public class Constants {
   public static final String PRODUCT_IMAGE_URL = "https://raw.githubusercontent.com/eamquindio/mitiendacdn/main/images/products/";
 
   /**
+   * Categories Base URL
+   */
+  public static final String CATEGORY_IMAGE_URL = "https://raw.githubusercontent.com/eamquindio/mitiendacdn/main/images/categories/";
+
+
+  /**
    * oficcial green
    */
   public static final Color COLOR_GREEN = new Color(122,191,181);
