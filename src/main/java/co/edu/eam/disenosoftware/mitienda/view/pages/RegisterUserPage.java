@@ -2,6 +2,7 @@ package co.edu.eam.disenosoftware.mitienda.view.pages;
 
 import co.edu.eam.disenosoftware.mitienda.model.entities.User;
 import co.edu.eam.disenosoftware.mitienda.view.controllers.UserRegistreController;
+import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.widgets.TextPrompt;
 
