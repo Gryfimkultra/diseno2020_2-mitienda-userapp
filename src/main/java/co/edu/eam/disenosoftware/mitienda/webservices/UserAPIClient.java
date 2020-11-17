@@ -1,10 +1,15 @@
 package co.edu.eam.disenosoftware.mitienda.webservices;
 
+import co.edu.eam.disenosoftware.mitienda.model.entities.Order;
 import co.edu.eam.disenosoftware.mitienda.model.entities.User;
 import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+
+import java.util.List;
 
 
 /**
@@ -27,4 +32,12 @@ public interface UserAPIClient {
    */
   @POST(USER_URL + "register")
   Call<Void> registerUser(@Body User request);
+
+  /**
+   * User Orders - Web Services
+   * @param userId UserOrdersRequest
+   * @return list Orders
+   */
+  @GET(USER_URL + "{userId}/orders")
+  Call<List<Order>> getOrdersUser(@Path("userId") Long userId);
 }

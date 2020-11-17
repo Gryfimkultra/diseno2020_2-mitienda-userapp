@@ -19,7 +19,11 @@ public class Constants {
    */
   public static final String CATEGORY_IMAGE_URL = "https://raw.githubusercontent.com/eamquindio/mitiendacdn/main/images/categories/";
 
-
+  /**
+   * stores Base url
+   */
+  public static final String STORE_IMAGE_URL = "https://raw.githubusercontent.com/eamquindio/mitiendacdn/main/images/stores/";
+  
   /**
    * oficcial green
    */
@@ -30,10 +34,4 @@ public class Constants {
    * Title Font
    */
   public static final Font TITLE_FONT = new Font ("TimesRoman", Font.BOLD | Font.ITALIC, 20);
-
-
-  /**
-   * stores Base url
-   */
-  public static final String STORE_IMAGE_URL = "https://raw.githubusercontent.com/eamquindio/mitiendacdn/main/images/stores/";
 }
