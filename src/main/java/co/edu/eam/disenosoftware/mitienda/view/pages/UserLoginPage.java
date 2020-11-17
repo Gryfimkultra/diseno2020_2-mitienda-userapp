@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class UserLoginPage extends Page {
 
@@ -26,21 +28,24 @@ public class UserLoginPage extends Page {
     scrollPane.setLayout(null);
     scrollPane.setBackground(Color.white);
 
-    JLabel tittle = new JLabel("<html><h1><strong>Sign in to Grocery App</strong></h1></html>");
-    JLabel description = new JLabel(("<html><h3><font color='gray'><strong>Enter email & password to continue</strong></font></h3></html>"));
-    JLabel forgot = new JLabel(("<html><h3><font color='gray'><strong>¿Forgot password?</strong></font></h3></html>"));
+    Locale defaulLocale = Locale.getDefault();
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("messages", defaulLocale);
+
+    JLabel tittle = new JLabel("<html><h2><strong>" + resourceBundle.getString("userloginpage.title") + "</strong></h2></html>");
+    JLabel description = new JLabel(("<html><h3><font color='gray'><strong>" + resourceBundle.getString("userloginpage.description") + "</strong></font></h3></html>"));
+    JLabel forgot = new JLabel(("<html><h3><font color='gray'><strong>" + resourceBundle.getString("userloginpage.forgot") + "</strong></font></h3></html>"));
 
     JTextField userName = new JTextField("");
     userName.setBorder(null);
     JPasswordField password = new JPasswordField("");
     password.setBorder(null);
 
-    TextPrompt placeUser = new TextPrompt("User Name", userName);
-    TextPrompt placePassword = new TextPrompt("Password", password);
+    TextPrompt placeUser = new TextPrompt(resourceBundle.getString("userloginpage.username"), userName);
+    TextPrompt placePassword = new TextPrompt(resourceBundle.getString("userloginpage.password"), password);
     JSeparator line1 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line2 = new JSeparator(SwingConstants.HORIZONTAL);
 
-    JButton buttonSignIn = new JButton("SIGN IN");
+    JButton buttonSignIn = new JButton(resourceBundle.getString("userloginpage.buttonsignin"));
     buttonSignIn.setOpaque(true);
     buttonSignIn.setBorderPainted(false);
     buttonSignIn.setBackground(new Color(95, 144, 81).brighter());
@@ -61,6 +66,10 @@ public class UserLoginPage extends Page {
 
         UserLoginRequest userLoginRequest = new UserLoginRequest(userName.getText(), password.getText());
         userLoginController.userLogin(userLoginRequest);
+
+        JOptionPane.showMessageDialog(null, resourceBundle.getString("userloginpage.userloggedin"));
+
+        Navigator.goToFrame("StoresOpenPage");
       }
     });
 
@@ -98,17 +107,17 @@ public class UserLoginPage extends Page {
     panel.setLayout(new BorderLayout());
     panel.setBackground(Color.white);
 
+    Locale defaulLocale = Locale.getDefault();
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("messages", defaulLocale);
+
     panel.setMaximumSize(new Dimension(500, 200));
 
-    JLabel signIn = new JLabel("<html><font color='green'><strong>Sign in</strong></font></html>");
-    JLabel signUp = new JLabel("<html>Sign up</html>");
+    JLabel signIn = new JLabel("<html><font color='green'><strong>" + resourceBundle.getString("userloginpage.singin") + "</strong></font></html>");
+    JLabel signUp = new JLabel("<html>" + resourceBundle.getString("userloginpage.singup") + "</html>");
 
     signUp.addMouseListener(new MouseAdapter() {
       public void mouseClicked(MouseEvent e) {
-
         Navigator.goToFrame("RegisterUserPage");
-        dispose();
-
       }
     });
 

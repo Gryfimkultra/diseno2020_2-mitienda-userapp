@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class RegisterUserPage extends Page {
   @Override
@@ -24,8 +26,11 @@ public class RegisterUserPage extends Page {
     scrollPane.setLayout(null);
     scrollPane.setBackground(Color.white);
 
-    JLabel tittle = new JLabel("<html><h2><strong>Welcome to Grocery App</strong></h2></html>");
-    JLabel description = new JLabel(("<html><h3><font color='gray'><strong>Lets  get started</strong></font></h3></html>"));
+    Locale defaulLocale = Locale.getDefault();
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("messages", defaulLocale);
+
+    JLabel tittle = new JLabel("<html><h2><strong>" + resourceBundle.getString("userregisterpage.title") + "</strong></h2></html>");
+    JLabel description = new JLabel(("<html><h3><font color='gray'><strong>" + resourceBundle.getString("userregisterpage.lets") + "</strong></font></h3></html>"));
 
     JTextField userName = new JTextField("");
     userName.setBorder(null);
@@ -36,17 +41,17 @@ public class RegisterUserPage extends Page {
     JPasswordField password = new JPasswordField("");
     password.setBorder(null);
 
-    TextPrompt placeUser = new TextPrompt("User Name", userName);
-    TextPrompt placePassword = new TextPrompt("Password", password);
-    TextPrompt placePhone = new TextPrompt("Phone", phone);
-    TextPrompt placeEmail = new TextPrompt("Email Address", emailAddress);
+    TextPrompt placeUser = new TextPrompt(resourceBundle.getString("userregisterpage.username"), userName);
+    TextPrompt placePassword = new TextPrompt(resourceBundle.getString("userregisterpage.password"), password);
+    TextPrompt placePhone = new TextPrompt(resourceBundle.getString("userregisterpage.phone"), phone);
+    TextPrompt placeEmail = new TextPrompt(resourceBundle.getString("userregisterpage.email"), emailAddress);
 
     JSeparator line1 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line2 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line3 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line4 = new JSeparator(SwingConstants.HORIZONTAL);
 
-    JButton buttonSignIn = new JButton("SIGN UP");
+    JButton buttonSignIn = new JButton(resourceBundle.getString("userregisterpage.buttonsignup"));
     buttonSignIn.setOpaque(true);
     buttonSignIn.setBorderPainted(false);
     buttonSignIn.setBackground(new Color(95, 144, 81).brighter());
@@ -104,6 +109,10 @@ public class RegisterUserPage extends Page {
         User user = new User(userName.getText(), phone.getText(), emailAddress.getText(), password.getText());
 
         userRegistreController.userRegister(user);
+
+        JOptionPane.showMessageDialog(null, resourceBundle.getString("userregisterpage.userRegistred"));
+
+        Navigator.goToFrame("UserLoginPage");
       }
     });
 
@@ -117,17 +126,18 @@ public class RegisterUserPage extends Page {
     panel.setLayout(new BorderLayout());
     panel.setBackground(Color.white);
 
+    Locale defaulLocale = Locale.getDefault();
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("messages", defaulLocale);
+
     panel.setMaximumSize(new Dimension(500, 200));
 
-    JLabel signIn = new JLabel("<html>Sign in</html>");
-    JLabel signUp = new JLabel("<html><font color='green'><strong>Sign up</strong></font></html>");
+    JLabel signIn = new JLabel("<html>" + resourceBundle.getString("userloginpage.singin") + "</html>");
+    JLabel signUp = new JLabel("<html><font color='green'><strong>" + resourceBundle.getString("userloginpage.singup") + "</strong></font></html>");
 
     signIn.addMouseListener(new MouseAdapter() {
       public void mouseClicked(MouseEvent e) {
 
         Navigator.goToFrame("UserLoginPage");
-        dispose();
-
       }
     });
 
