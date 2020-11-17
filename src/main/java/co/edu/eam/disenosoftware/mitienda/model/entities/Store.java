@@ -65,6 +65,7 @@ public class Store implements Serializable {
 
   /**
    * Constructor
+   *
    * @param name
    * @param owner
    * @param address
@@ -110,6 +111,7 @@ public class Store implements Serializable {
 
   /**
    * Set Store's id
+   *
    * @param id Store's id
    */
   public void setId(Long id) {
@@ -118,6 +120,7 @@ public class Store implements Serializable {
 
   /**
    * Get Store's owner
+   *
    * @return store's owner
    */
   public String getOwner() {
@@ -126,6 +129,7 @@ public class Store implements Serializable {
 
   /**
    * Set store's owner
+   *
    * @param owner store's owner
    */
   public void setOwner(String owner) {
@@ -134,6 +138,7 @@ public class Store implements Serializable {
 
   /**
    * Get store's address
+   *
    * @return store's address
    */
   public String getAddress() {
@@ -142,6 +147,7 @@ public class Store implements Serializable {
 
   /**
    * Set store's address
+   *
    * @param address store's address
    */
   public void setAddress(String address) {
@@ -150,6 +156,7 @@ public class Store implements Serializable {
 
   /**
    * Get store's image
+   *
    * @return store's image
    */
   public String getImage() {
@@ -158,6 +165,7 @@ public class Store implements Serializable {
 
   /**
    * Set store's image
+   *
    * @param image store's image
    */
   public void setImage(String image) {
@@ -166,6 +174,7 @@ public class Store implements Serializable {
 
   /**
    * boolean delivery
+   *
    * @return delivery
    */
   public boolean isDelivery() {
@@ -174,6 +183,7 @@ public class Store implements Serializable {
 
   /**
    * Set Store's delivery
+   *
    * @param delivery store's delivery
    */
   public void setDelivery(boolean delivery) {
@@ -182,6 +192,7 @@ public class Store implements Serializable {
 
   /**
    * boolean open
+   *
    * @return boolean
    */
   public boolean isOpen() {
@@ -190,6 +201,7 @@ public class Store implements Serializable {
 
   /**
    * Set store's open
+   *
    * @param open open store's
    */
   public void setOpen(boolean open) {
@@ -198,6 +210,7 @@ public class Store implements Serializable {
 
   /**
    * Get store's phone
+   *
    * @return store's phone
    */
   public String getPhone() {
@@ -206,6 +219,7 @@ public class Store implements Serializable {
 
   /**
    * Set store's phone
+   *
    * @param phone store's phone
    */
   public void setPhone(String phone) {
@@ -214,6 +228,7 @@ public class Store implements Serializable {
 
   /**
    * Get store's password
+   *
    * @return store's password
    */
   public String getPassword() {
@@ -222,6 +237,7 @@ public class Store implements Serializable {
 
   /**
    * Set store's password
+   *
    * @param password store's password
    */
   public void setPassword(String password) {

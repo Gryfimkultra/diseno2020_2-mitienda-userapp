@@ -28,8 +28,9 @@ public class ImageUtil {
 
   /**
    * Load image from url scaling the image.
-   * @param url url
-   * @param width withd
+   *
+   * @param url    url
+   * @param width  withd
    * @param height heigh
    * @return scaled image
    */

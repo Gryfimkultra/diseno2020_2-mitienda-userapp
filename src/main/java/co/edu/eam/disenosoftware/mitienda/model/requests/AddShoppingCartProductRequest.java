@@ -27,9 +27,10 @@ public class AddShoppingCartProductRequest {
 
   /**
    * Constructor
-   * @param  storeId , store id
+   *
+   * @param storeId   , store id
    * @param productId , product id
-   * @param userId , user id
+   * @param userId    , user id
    * @param quantity
    */
 
@@ -42,6 +43,7 @@ public class AddShoppingCartProductRequest {
 
   /**
    * function to get the stores id
+   *
    * @return , stores id
    */
   public Long getStoreId() {
@@ -50,6 +52,7 @@ public class AddShoppingCartProductRequest {
 
   /**
    * function to set the stores id
+   *
    * @param storeId , the stores id
    */
   public void setStoreId(Long storeId) {
@@ -58,6 +61,7 @@ public class AddShoppingCartProductRequest {
 
   /**
    * function to get the product id
+   *
    * @return , the product id
    */
   public Long getProductId() {
@@ -66,6 +70,7 @@ public class AddShoppingCartProductRequest {
 
   /**
    * function to set the products id
+   *
    * @param productId , the products id
    */
   public void setProductId(Long productId) {
@@ -74,6 +79,7 @@ public class AddShoppingCartProductRequest {
 
   /**
    * function to get the users id
+   *
    * @return , the users id
    */
   public Long getUserId() {
@@ -82,6 +88,7 @@ public class AddShoppingCartProductRequest {
 
   /**
    * function to set the users id
+   *
    * @param userId , the users id
    */
   public void setUserId(Long userId) {
@@ -90,6 +97,7 @@ public class AddShoppingCartProductRequest {
 
   /**
    * function to get quantity
+   *
    * @return , the quantity
    */
   public int getQuantity() {
@@ -98,6 +106,7 @@ public class AddShoppingCartProductRequest {
 
   /**
    * function to set the quantity
+   *
    * @param quantity , the quantity
    */
   public void setQuantity(int quantity) {

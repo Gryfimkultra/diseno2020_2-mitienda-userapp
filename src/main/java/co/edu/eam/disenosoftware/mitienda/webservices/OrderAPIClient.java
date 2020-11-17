@@ -14,15 +14,16 @@ public interface OrderAPIClient {
   /**
    * order api base url
    */
-  public static final String ORDER_URL = "/api/orders/";
+  String ORDER_URL = "/api/orders/";
 
   /**
    * get order by id
+   *
    * @param id
    * @return order
    */
-  @GET(ORDER_URL+"{id}")
-  Call<Order>  getOrderById(@Path("id") long id);
+  @GET(ORDER_URL + "{id}")
+  Call<Order> getOrderById(@Path("id") long id);
 
   @POST(ORDER_URL + "/from-shoppingcart/{idShoppingcart}")
   Call<Void> createOrder(@Path("idShoppingcart") Long idShoppingcart);

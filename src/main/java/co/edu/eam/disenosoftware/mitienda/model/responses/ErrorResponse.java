@@ -20,7 +20,8 @@ public class ErrorResponse {
 
   /**
    * Constructor
-   * @param message error message
+   *
+   * @param message   error message
    * @param errorCode error code
    */
   public ErrorResponse(String message, String errorCode) {
@@ -30,6 +31,7 @@ public class ErrorResponse {
 
   /**
    * GEt the error message
+   *
    * @return error message
    */
   public String getMessage() {
@@ -38,6 +40,7 @@ public class ErrorResponse {
 
   /**
    * Get the error code
+   *
    * @return error code
    */
   public String getErrorCode() {

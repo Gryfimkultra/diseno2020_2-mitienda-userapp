@@ -14,7 +14,7 @@ public interface ShoppingCartAPIClient {
   /**
    * shopping cart base url
    */
-  public static final String SHOPPING_CART_URL = "api/shopping-cart/";
+  String SHOPPING_CART_URL = "api/shopping-cart/";
 
   @POST(SHOPPING_CART_URL + "add-product")
   Call<Void> addProductToShoppingCart(@Body AddShoppingCartProductRequest request);
@@ -22,6 +22,7 @@ public interface ShoppingCartAPIClient {
 
   /**
    * delete product from shoppong cart
+   *
    * @param idShoppingCart
    * @param idShoppingCartProduct
    * @return

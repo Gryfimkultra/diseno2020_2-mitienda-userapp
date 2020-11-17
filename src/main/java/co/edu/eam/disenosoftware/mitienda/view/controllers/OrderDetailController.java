@@ -3,8 +3,6 @@ package co.edu.eam.disenosoftware.mitienda.view.controllers;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Order;
 import co.edu.eam.disenosoftware.mitienda.repositories.OrdersRepository;
 
-import java.io.IOException;
-
 /**
  * COntrolador de la pagina del detalle de una orden.
  */
@@ -21,10 +19,11 @@ public class OrderDetailController {
 
   /**
    * get the order
+   *
    * @param id order id to get
    * @return order
    */
-  public Order getOrder(Long id) throws IOException {
+  public Order getOrder(Long id) {
     ordersRepository = new OrdersRepository();
 
     return ordersRepository.getOrderById(id);

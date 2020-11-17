@@ -24,7 +24,7 @@ public class StoreHomeProductWidget extends Widget<ProductStore> {
 
   @Override
   public void build() {
-    this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+    this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
     JPanel productInfo = new JPanel();
     productInfo.setLayout(new BoxLayout(productInfo, BoxLayout.Y_AXIS));
@@ -32,26 +32,26 @@ public class StoreHomeProductWidget extends Widget<ProductStore> {
     productInfo.setBorder(BorderFactory.createLineBorder(Constants.COLOR_GREEN));
     productInfo.setMaximumSize(new Dimension(150, 170));
 
-    ImageIcon image = ImageUtil.loadFromURL(Constants.PRODUCT_IMAGE_URL+
-            data.getProduct().getId()+"_small.jpg",
+    ImageIcon image = ImageUtil.loadFromURL(Constants.PRODUCT_IMAGE_URL +
+                    data.getProduct().getId() + "_small.jpg",
             150, 150);
 
     JLabel productImage = new JLabel();
     productImage.setIcon(image);
 
     String product = data.getProduct().getName();
-    product = product.length() >=22? product.substring(0,22)+"...":product;
+    product = product.length() >= 22 ? product.substring(0, 22) + "..." : product;
 
     JPanel productDetailInfo = new JPanel();
     productDetailInfo.setLayout(new BoxLayout(productDetailInfo, BoxLayout.Y_AXIS));
-    productDetailInfo.setBorder(BorderFactory.createMatteBorder(10,10,10,10,Color.WHITE));
+    productDetailInfo.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.WHITE));
     productDetailInfo.setBackground(Color.WHITE);
 
-    JLabel productName  = new JLabel(product);
-    productName.setMaximumSize(new Dimension(140,productName.getPreferredSize().height));
+    JLabel productName = new JLabel(product);
+    productName.setMaximumSize(new Dimension(140, productName.getPreferredSize().height));
 
-    JLabel productPrice = new JLabel("$"+data.getPrice());
-    productPrice.setMaximumSize(new Dimension(150,productPrice.getPreferredSize().height));
+    JLabel productPrice = new JLabel("$" + data.getPrice());
+    productPrice.setMaximumSize(new Dimension(150, productPrice.getPreferredSize().height));
 
     productDetailInfo.add(productName);
     productDetailInfo.add(productPrice);
@@ -67,13 +67,13 @@ public class StoreHomeProductWidget extends Widget<ProductStore> {
 
   }
 
-  public void agregarShoppingCart(){
+  public void agregarShoppingCart() {
     Map<String, Object> params = new HashMap<>();
     params.put("product", data);
 
     LocalStorage.saveData("productStore", data);
 
-    Navigator.goToFrame("ShoppingCartAddProductPage",params);
+    Navigator.goToFrame("ShoppingCartAddProductPage", params);
     page.dispose();
   }
 

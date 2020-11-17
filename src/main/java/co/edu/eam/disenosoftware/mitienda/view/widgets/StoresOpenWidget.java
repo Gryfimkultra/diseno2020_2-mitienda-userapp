@@ -11,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,18 +22,18 @@ public class StoresOpenWidget extends Widget<Store> {
   @Override
   public void build() {
 
-    setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
+    setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
     ImageIcon imageIcon = ImageUtil.loadFromURL(Constants.STORE_IMAGE_URL +
-            data.getId() + ".jpg",
-            130,80);
+                    data.getId() + ".jpg",
+            130, 80);
 
 
     JLabel lblImage = new JLabel(imageIcon);
 
     String name = data.getName();
 
-    name = name.length() >= 18 ? name.substring(0,15) + "..." : name;
+    name = name.length() >= 18 ? name.substring(0, 15) + "..." : name;
 
     JLabel lblName = new JLabel(name);
 
@@ -44,7 +43,7 @@ public class StoresOpenWidget extends Widget<Store> {
     lblPhone.setForeground(Color.gray);
 
     JPanel content = new JPanel();
-    content.setLayout(new BoxLayout(content,BoxLayout.Y_AXIS));
+    content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
     content.setBackground(Color.white);
 
     content.add(lblName);
@@ -55,7 +54,7 @@ public class StoresOpenWidget extends Widget<Store> {
 
     this.setBackground(Color.white);
 
-    this.setAlignmentX(this.CENTER_ALIGNMENT);
+    this.setAlignmentX(CENTER_ALIGNMENT);
 
     this.setBorder(new EmptyBorder(15, 15, 15, 5));
 
@@ -74,8 +73,8 @@ public class StoresOpenWidget extends Widget<Store> {
       public void mouseClicked(MouseEvent e) {
         super.mouseClicked(e);
         Map<String, Object> params = new HashMap<>();
-        params.put("storeId", (Long) data.getId());
-        Navigator.goToFrame("StoreHomePage",params);
+        params.put("storeId", data.getId());
+        Navigator.goToFrame("StoreHomePage", params);
       }
     });
 

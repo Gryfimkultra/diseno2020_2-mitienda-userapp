@@ -9,7 +9,8 @@ import co.edu.eam.disenosoftware.mitienda.view.lib.Widget;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -25,18 +26,18 @@ public class HistoryOrdersWidget extends Widget<Order> {
   @Override
   public void build() {
     ImageIcon imageIcon = ImageUtil.loadFromURL(Constants.STORE_IMAGE_URL + data.getStore().getId() +
-            ".jpg", 130,80);
-    setLayout(new BoxLayout(this,BoxLayout.X_AXIS));
+            ".jpg", 130, 80);
+    setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
     JLabel lblImage = new JLabel(imageIcon);
 
     JPanel panelInfo = new JPanel();
-    panelInfo.setLayout(new BoxLayout(panelInfo,BoxLayout.Y_AXIS));
+    panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.Y_AXIS));
     panelInfo.setBackground(Color.WHITE);
 
     JLabel lblName = new JLabel();
     lblName.setText("Nombre de la Tienda: " + data.getStore().getName());
     JLabel lblTotalProduct = new JLabel();
-    lblTotalProduct.setText("Total de productos: " + String.valueOf(data.getProduct().size()));
+    lblTotalProduct.setText("Total de productos: " + data.getProduct().size());
     JLabel lblTotalOrder = new JLabel(NumberFormat.getCurrencyInstance().format(data.getTotalValue()));
     JLabel lblDate = new JLabel(SimpleDateFormat.getDateInstance().format(data.getDate()));
 
@@ -54,7 +55,7 @@ public class HistoryOrdersWidget extends Widget<Order> {
         params.put("orderId", data.getId());
 
         LocalStorage.saveData("orderId", data.getId());
-        Navigator.goToFrame("OrderDetailPage",params);
+        Navigator.goToFrame("OrderDetailPage", params);
       }
     };
     jButton.addActionListener(accion);

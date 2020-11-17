@@ -10,16 +10,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 
 public class RegisterUserPage extends Page {
   @Override
-  public void init() throws Exception {
+  public void init() {
 
   }
 
   @Override
-  public JComponent buildContent() throws Exception {
+  public JComponent buildContent() {
 
     JScrollPane scrollPane = new JScrollPane();
     scrollPane.setLayout(null);
@@ -71,31 +70,31 @@ public class RegisterUserPage extends Page {
     description.setLocation(22, 40);
     description.setSize(300, 80);
 
-    userName.setLocation(22,130);
+    userName.setLocation(22, 130);
     userName.setSize(300, 20);
 
-    emailAddress.setLocation(22,200);
+    emailAddress.setLocation(22, 200);
     emailAddress.setSize(300, 20);
 
-    phone.setLocation(22,270);
+    phone.setLocation(22, 270);
     phone.setSize(300, 20);
 
-    password.setLocation(22,340);
+    password.setLocation(22, 340);
     password.setSize(300, 20);
 
-    line1.setLocation(22,150);
+    line1.setLocation(22, 150);
     line1.setSize(300, 20);
 
-    line2.setLocation(22,220);
+    line2.setLocation(22, 220);
     line2.setSize(300, 20);
 
-    line3.setLocation(22,290);
+    line3.setLocation(22, 290);
     line3.setSize(300, 20);
 
-    line4.setLocation(22,360);
+    line4.setLocation(22, 360);
     line4.setSize(300, 20);
 
-    buttonSignIn.setLocation(217,400);
+    buttonSignIn.setLocation(217, 400);
     buttonSignIn.setSize(100, 40);
 
     buttonSignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -104,11 +103,7 @@ public class RegisterUserPage extends Page {
 
         User user = new User(userName.getText(), phone.getText(), emailAddress.getText(), password.getText());
 
-        try {
-          userRegistreController.userRegister(user);
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
+        userRegistreController.userRegister(user);
       }
     });
 
@@ -116,7 +111,7 @@ public class RegisterUserPage extends Page {
   }
 
   @Override
-  public JComponent buildHeader() throws Exception {
+  public JComponent buildHeader() {
 
     JPanel panel = new JPanel();
     panel.setLayout(new BorderLayout());
@@ -127,10 +122,8 @@ public class RegisterUserPage extends Page {
     JLabel signIn = new JLabel("<html>Sign in</html>");
     JLabel signUp = new JLabel("<html><font color='green'><strong>Sign up</strong></font></html>");
 
-    signIn.addMouseListener(new MouseAdapter()
-    {
-      public void mouseClicked(MouseEvent e)
-      {
+    signIn.addMouseListener(new MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
 
         Navigator.goToFrame("UserLoginPage");
         dispose();
@@ -145,7 +138,7 @@ public class RegisterUserPage extends Page {
   }
 
   @Override
-  public JComponent buildFooter() throws Exception {
+  public JComponent buildFooter() {
     return null;
   }
 }

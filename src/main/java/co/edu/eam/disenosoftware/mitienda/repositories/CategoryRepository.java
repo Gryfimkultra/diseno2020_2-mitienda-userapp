@@ -1,5 +1,6 @@
 package co.edu.eam.disenosoftware.mitienda.repositories;
 
+import co.edu.eam.disenosoftware.mitienda.exceptions.TecnicalException;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Category;
 import co.edu.eam.disenosoftware.mitienda.util.APIErrorHandler;
 import co.edu.eam.disenosoftware.mitienda.util.RetroFitUtils;
@@ -17,20 +18,25 @@ public class CategoryRepository {
 
   /**
    * get store categories
+   *
    * @param storeId
    * @return
-   * @throws IOException
+   * @
    */
-  public List<Category> getCategoriesByStoreId(Long storeId) throws IOException {
+  public List<Category> getCategoriesByStoreId(Long storeId) {
     StoreAPIClient apiClient = RetroFitUtils.buildAPIClient(StoreAPIClient.class);
 
-    Call<List<Category>> categoriesRequest = apiClient.getCategoriesByStoreId(storeId);
-    Response<List<Category>> response = categoriesRequest.execute();
+    try {
+      Call<List<Category>> categoriesRequest = apiClient.getCategoriesByStoreId(storeId);
+      Response<List<Category>> response = categoriesRequest.execute();
 
-    if (response.isSuccessful()){
-      return response.body();
-    }else{
-      throw APIErrorHandler.throwApiException(response);
+      if (response.isSuccessful()) {
+        return response.body();
+      } else {
+        throw APIErrorHandler.throwApiException(response);
+      }
+    } catch (IOException exc) {
+      throw new TecnicalException(exc);
     }
   }
 }

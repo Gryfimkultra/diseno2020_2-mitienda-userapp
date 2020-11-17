@@ -23,11 +23,11 @@ public class StoreHomeCategoriesWidget extends Widget<Category> {
   public void build() {
     this.setLayout(new BorderLayout());
     this.setBackground(Color.WHITE);
-    this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+    this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-    ImageIcon image = ImageUtil.loadFromURL(Constants.CATEGORY_IMAGE_URL+
-                    data.getIcon());
-    JLabel categoryName  = new JLabel(data.getName());
+    ImageIcon image = ImageUtil.loadFromURL(Constants.CATEGORY_IMAGE_URL +
+            data.getIcon());
+    JLabel categoryName = new JLabel(data.getName());
 
     JLabel categoryImage = new JLabel();
     categoryImage.setIcon(image);
@@ -35,7 +35,7 @@ public class StoreHomeCategoriesWidget extends Widget<Category> {
     categoryImage.setMaximumSize(new Dimension(64, 64));
 
     this.add(categoryImage, BorderLayout.CENTER);
-    this.add(categoryName,BorderLayout.SOUTH);
+    this.add(categoryName, BorderLayout.SOUTH);
     this.setCursor(new Cursor(Cursor.HAND_CURSOR));
     this.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -44,12 +44,12 @@ public class StoreHomeCategoriesWidget extends Widget<Category> {
     });
   }
 
-  public void category(Long id){
+  public void category(Long id) {
 
     LocalStorage.saveData("searchCategory", id);
     try {
       page.refresh();
-    }catch (Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
 

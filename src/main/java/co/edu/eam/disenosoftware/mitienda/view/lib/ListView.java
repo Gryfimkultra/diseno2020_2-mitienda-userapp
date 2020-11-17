@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Listvwiew component
+ *
  * @param <T>
  */
 public class ListView<T extends JComponent> extends JScrollPane {
@@ -14,7 +15,7 @@ public class ListView<T extends JComponent> extends JScrollPane {
   /**
    * Enum values for orientation
    */
-  public static enum ListViewOrientation {
+  public enum ListViewOrientation {
     HORIZONTAL,
     VERTICAL
   }
@@ -31,6 +32,7 @@ public class ListView<T extends JComponent> extends JScrollPane {
 
   /**
    * Constrtuctor
+   *
    * @param components componente to render
    */
   public ListView(List<T> components) {
@@ -40,7 +42,8 @@ public class ListView<T extends JComponent> extends JScrollPane {
 
   /**
    * componts to render in one direction
-   * @param components components to render
+   *
+   * @param components  components to render
    * @param orientation direction to render
    */
   public ListView(List<T> components, ListViewOrientation orientation) {
@@ -51,6 +54,7 @@ public class ListView<T extends JComponent> extends JScrollPane {
 
   /**
    * COnstructor
+   *
    * @param orientation desire direction to render
    */
   public ListView(ListViewOrientation orientation) {
@@ -60,6 +64,7 @@ public class ListView<T extends JComponent> extends JScrollPane {
 
   /**
    * Build component container
+   *
    * @return container
    */
   private JPanel buildParent() {
@@ -78,6 +83,7 @@ public class ListView<T extends JComponent> extends JScrollPane {
 
   /**
    * Fill container whith components
+   *
    * @param parent
    */
   private void fill(JPanel parent) {
@@ -109,6 +115,7 @@ public class ListView<T extends JComponent> extends JScrollPane {
 
   /**
    * Set components to render
+   *
    * @param components
    */
   public void setComponents(List<T> components) {
@@ -118,6 +125,7 @@ public class ListView<T extends JComponent> extends JScrollPane {
 
   /**
    * set height of this component
+   *
    * @param height
    */
   public void setHeight(int height) {
@@ -126,6 +134,7 @@ public class ListView<T extends JComponent> extends JScrollPane {
 
   /**
    * Add component to render
+   *
    * @param component
    */
   public void add(T component) {

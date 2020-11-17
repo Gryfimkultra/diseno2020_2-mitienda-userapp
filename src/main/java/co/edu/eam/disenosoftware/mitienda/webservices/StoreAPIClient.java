@@ -15,23 +15,24 @@ import java.util.List;
  */
 public interface StoreAPIClient {
 
-  public static final String STORES_URL = "/api/stores/";
+  String STORES_URL = "/api/stores/";
 
   @GET(STORES_URL + "is-open")
   Call<List<Store>> getAllStoresOpen();
 
   /**
    * Store Categories - Web Services
+   *
    * @param storeId of a store
    * @return List of categories
    */
 
-  @GET(STORES_URL+ "{storeId}/categories")
+  @GET(STORES_URL + "{storeId}/categories")
   Call<List<Category>> getCategoriesByStoreId(@Path("storeId") Long storeId);
 
 
-  public static final String SHOPPINGCART_URL = "/api/stores/";
+  String SHOPPINGCART_URL = "/api/stores/";
 
-  @GET(SHOPPINGCART_URL +"{storeId}/users/{userId}/shopping-carts")
+  @GET(SHOPPINGCART_URL + "{storeId}/users/{userId}/shopping-carts")
   Call<ShoppingCart> getShoppingCartByUserIdAndStoreId(@Path("storeId") Long storeId, @Path("userId") Long userId);
 }

@@ -1,5 +1,6 @@
 package co.edu.eam.disenosoftware.mitienda.repositories;
 
+import co.edu.eam.disenosoftware.mitienda.exceptions.TecnicalException;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Order;
 import co.edu.eam.disenosoftware.mitienda.model.entities.User;
 import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
@@ -19,48 +20,60 @@ public class UserRepository {
 
   /**
    * login user
+   *
    * @param userLoginRequest
    * @return
-   * @throws IOException
+   * @
    */
-  public User loginUser(UserLoginRequest userLoginRequest) throws IOException {
-    UserAPIClient apiClient= RetroFitUtils.buildAPIClient(UserAPIClient.class);
-    Call<User>request = apiClient.loginUser(userLoginRequest);
-    Response<User>response=request.execute();
+  public User loginUser(UserLoginRequest userLoginRequest) {
+    UserAPIClient apiClient = RetroFitUtils.buildAPIClient(UserAPIClient.class);
+    Call<User> request = apiClient.loginUser(userLoginRequest);
+    try {
+      Response<User> response = request.execute();
 
-    if(!response.isSuccessful()){
-      throw APIErrorHandler.throwApiException(response);
+      if (!response.isSuccessful()) {
+        throw APIErrorHandler.throwApiException(response);
+      }
+
+      return response.body();
+    } catch (IOException exc) {
+      throw new TecnicalException(exc);
     }
-
-    return response.body();
   }
 
   /**
    * Create user
+   *
    * @param user
-   * @throws IOException
+   * @
    */
-  public void createUser(User user) throws IOException {
+  public void createUser(User user) {
     UserAPIClient apiClient = RetroFitUtils.buildAPIClient(UserAPIClient.class);
-    Call<Void>request = apiClient.registerUser(user);
+    Call<Void> request = apiClient.registerUser(user);
+    try {
+      Response<Void> response = request.execute();
 
-    Response<Void> response = request.execute();
-
-    if (!response.isSuccessful()) {
-      throw APIErrorHandler.throwApiException(response);
+      if (!response.isSuccessful()) {
+        throw APIErrorHandler.throwApiException(response);
+      }
+    } catch (IOException exc) {
+      throw new TecnicalException(exc);
     }
   }
 
-  public List<Order> ordersUser(Long userId) throws  IOException {
+  public List<Order> ordersUser(Long userId) {
     UserAPIClient apiClient = RetroFitUtils.buildAPIClient(UserAPIClient.class);
+    try {
+      Call<List<Order>> ordersRequest = apiClient.getOrdersUser(userId);
+      Response<List<Order>> ordersResponse = ordersRequest.execute();
 
-    Call<List<Order>> ordersRequest = apiClient.getOrdersUser(userId);
-    Response<List<Order>> ordersResponse = ordersRequest.execute();
-
-    if(ordersResponse.isSuccessful()) {
-      return ordersResponse.body();
-    } else {
-      throw APIErrorHandler.throwApiException(ordersResponse);
+      if (ordersResponse.isSuccessful()) {
+        return ordersResponse.body();
+      } else {
+        throw APIErrorHandler.throwApiException(ordersResponse);
+      }
+    } catch (IOException exc) {
+      throw new TecnicalException(exc);
     }
 
   }

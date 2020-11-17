@@ -12,8 +12,8 @@ import java.util.List;
  */
 public interface ProductAPIClient {
 
-    public static final String PRODUCT_URL = "/api/products/";
+  String PRODUCT_URL = "/api/products/";
 
-    @GET(PRODUCT_URL + "/by-name")
-    Call<List<Product>> getProductByName(@Path("name") String name);
+  @GET(PRODUCT_URL + "/by-name")
+  Call<List<Product>> getProductByName(@Path("name") String name);
 }

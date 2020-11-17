@@ -114,10 +114,10 @@ public class ShoppingCartProduct implements Serializable {
   @Override
   public String toString() {
     return "ShoppingCartProduct{" +
-        "id=" + id +
-        ", shoppingCart=" + shoppingCart +
-        ", product=" + product +
-        ", quantity=" + quantity +
-        '}';
+            "id=" + id +
+            ", shoppingCart=" + shoppingCart +
+            ", product=" + product +
+            ", quantity=" + quantity +
+            '}';
   }
 }

@@ -16,26 +16,25 @@ import java.util.List;
 public class HistoryOrdersPage extends Page {
 
   /**
-   *Page Controller
+   * Page Controller
    */
   private HistoryOrdersController historyOrdersController;
 
   @Override
-  public void init() throws Exception {
+  public void init() {
 
   }
 
   @Override
-  public JComponent buildContent() throws Exception {
+  public JComponent buildContent() {
 
     historyOrdersController = new HistoryOrdersController();
 
     Long userId = (Long) getParam("userId");
-    userId = 11L;
     List<Order> orderList = historyOrdersController.getOrderList(userId);
 
     JPanel panelGeneral = new JPanel();
-    panelGeneral.setLayout(new GridLayout(3,1));
+    panelGeneral.setLayout(new GridLayout(3, 1));
     panelGeneral.setBackground(Color.WHITE);
 
     JPanel panelUser1 = new JPanel();
@@ -51,51 +50,51 @@ public class HistoryOrdersPage extends Page {
     JLabel label3 = new JLabel("ORDERS_CANCELED");
     panelUser3.add(label3);
 
-    for (Order order: orderList) {
-      if (order.getState().equals("created")){
+    for (Order order : orderList) {
+      if (order.getState().equals("created")) {
         HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order);
         panelUser1.add(wdgt);
-      }else if (order.getState().equals("finished")){
+      } else if (order.getState().equals("finished")) {
         HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order);
         panelUser2.add(wdgt);
-      }else if (order.getState().equals("canceled")){
+      } else if (order.getState().equals("canceled")) {
         HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order);
         panelUser3.add(wdgt);
       }
     }
 
-    panelUser1.setLayout(new BoxLayout(panelUser1,BoxLayout.Y_AXIS));
+    panelUser1.setLayout(new BoxLayout(panelUser1, BoxLayout.Y_AXIS));
     panelUser1.setBackground(Color.WHITE);
 
-    panelUser2.setLayout(new BoxLayout(panelUser2,BoxLayout.Y_AXIS));
+    panelUser2.setLayout(new BoxLayout(panelUser2, BoxLayout.Y_AXIS));
     panelUser2.setBackground(Color.WHITE);
 
-    panelUser3.setLayout(new BoxLayout(panelUser3,BoxLayout.Y_AXIS));
+    panelUser3.setLayout(new BoxLayout(panelUser3, BoxLayout.Y_AXIS));
     panelUser3.setBackground(Color.WHITE);
 
     panelGeneral.add(panelUser1);
     panelGeneral.add(panelUser2);
     panelGeneral.add(panelUser3);
 
-    JScrollPane  scrollPane = new JScrollPane(panelGeneral);
+    JScrollPane scrollPane = new JScrollPane(panelGeneral);
     return scrollPane;
   }
 
   @Override
-  public JComponent buildHeader() throws Exception {
+  public JComponent buildHeader() {
     JPanel panelOrder = new JPanel();
-    panelOrder.setLayout(new GridLayout(1,1));
+    panelOrder.setLayout(new GridLayout(1, 1));
     panelOrder.setBackground(Constants.COLOR_GREEN);
 
     JLabel label = new JLabel("Order History");
-    label.setPreferredSize(new Dimension(label.getPreferredSize().width,2));
+    label.setPreferredSize(new Dimension(label.getPreferredSize().width, 2));
     panelOrder.add(label);
     return panelOrder;
 
   }
 
   @Override
-  public JComponent buildFooter() throws Exception {
+  public JComponent buildFooter() {
     return null;
   }
 }

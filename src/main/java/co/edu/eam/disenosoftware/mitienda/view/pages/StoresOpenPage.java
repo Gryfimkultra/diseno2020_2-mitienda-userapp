@@ -30,14 +30,14 @@ public class StoresOpenPage extends Page {
   }
 
   @Override
-  public void init() throws Exception {
+  public void init() {
     controller = new StoresOpenController();
 
     List<Store> stores = controller.getOpenStores();
   }
 
   @Override
-  public JComponent buildContent() throws Exception {
+  public JComponent buildContent() {
 
     List<Store> stores = controller.getOpenStores();
 
@@ -45,7 +45,7 @@ public class StoresOpenPage extends Page {
 
     JPanel panlerStores = new JPanel();
 
-    panlerStores.setLayout(new GridLayout(stores.size(), 1 ));
+    panlerStores.setLayout(new GridLayout(stores.size(), 1));
 
     for (Store store : stores) {
       StoresOpenWidget wdgt = new StoresOpenWidget(store);
@@ -58,25 +58,25 @@ public class StoresOpenPage extends Page {
   }
 
   @Override
-  public JComponent buildHeader() throws Exception {
+  public JComponent buildHeader() {
 
     JPanel panelHeader = new JPanel();
-    panelHeader.setLayout(new GridLayout(1,1));
+    panelHeader.setLayout(new GridLayout(1, 1));
     panelHeader.setBackground(Constants.COLOR_GREEN);
 
     JLabel label = new JLabel("Tus tiendas cercanas");
     label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 20));
-    label.setBorder(BorderFactory.createEmptyBorder(10,10,5,10));
-    label.setPreferredSize(new Dimension(panelHeader.getPreferredSize().width,50));
+    label.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
+    label.setPreferredSize(new Dimension(panelHeader.getPreferredSize().width, 50));
     label.setAlignmentX(0.5f);
     label.setForeground(Color.WHITE);
 
-    panelHeader.add(label,CENTER_ALIGNMENT);
+    panelHeader.add(label, CENTER_ALIGNMENT);
     return panelHeader;
   }
 
   @Override
-  public JComponent buildFooter() throws Exception {
+  public JComponent buildFooter() {
     return null;
   }
 }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Category class
  */
-public class Category implements Serializable{
+public class Category implements Serializable {
 
   /**
    * Category - Primary key
@@ -59,6 +59,7 @@ public class Category implements Serializable{
 
   /**
    * category's Get method
+   *
    * @return icon
    */
   public String getIcon() {
@@ -76,6 +77,7 @@ public class Category implements Serializable{
 
   /**
    * category's Get name
+   *
    * @return name
    */
   public String getName() {
@@ -93,7 +95,8 @@ public class Category implements Serializable{
 
   /**
    * category's Get store
-   * @return  store
+   *
+   * @return store
    */
   public Store getStore() {
     return store;

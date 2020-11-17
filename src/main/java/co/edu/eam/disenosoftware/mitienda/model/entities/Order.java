@@ -51,11 +51,12 @@ public class Order implements Serializable {
   }
 
   /**
-   *  Method Order
+   * Method Order
+   *
    * @param store Order Store
    * @param user  Order User
    * @param state Order State
-   * @param date Order Date
+   * @param date  Order Date
    */
   public Order(Store store, User user, String state, Date date) {
     this.store = store;
@@ -66,6 +67,7 @@ public class Order implements Serializable {
 
   /**
    * Order's Get totalValue method
+   *
    * @return totalValue
    */
   public Double getTotalValue() {
@@ -74,6 +76,7 @@ public class Order implements Serializable {
 
   /**
    * Order's set totalValue method
+   *
    * @param totalValue totalValueParam
    */
   public void setTotalValue(Double totalValue) {

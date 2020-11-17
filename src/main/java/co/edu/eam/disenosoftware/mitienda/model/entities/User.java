@@ -45,11 +45,12 @@ public class User implements Serializable {
 
   /**
    * User's constructor
+   *
    * @param username, username
-   * @param phone, phone
-   * @param email, email
+   * @param phone,    phone
+   * @param email,    email
    * @param password, password
-   * @param name, name
+   * @param name,     name
    */
   public User(String username, String phone, String email, String password, String name) {
     this.username = username;
@@ -61,6 +62,7 @@ public class User implements Serializable {
 
   /**
    * Users constructor
+   *
    * @param username
    * @param phone
    * @param email
@@ -184,12 +186,12 @@ public class User implements Serializable {
   @Override
   public String toString() {
     return "User{" +
-        "id=" + id +
-        ", username='" + username + '\'' +
-        ", phone='" + phone + '\'' +
-        ", email='" + email + '\'' +
-        ", password='" + password + '\'' +
-        ", name='" + name + '\'' +
-        '}';
+            "id=" + id +
+            ", username='" + username + '\'' +
+            ", phone='" + phone + '\'' +
+            ", email='" + email + '\'' +
+            ", password='" + password + '\'' +
+            ", name='" + name + '\'' +
+            '}';
   }
 }

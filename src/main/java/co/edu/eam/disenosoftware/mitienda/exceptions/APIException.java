@@ -3,17 +3,17 @@ package co.edu.eam.disenosoftware.mitienda.exceptions;
 /**
  * API Exception clas
  */
-public class APIException extends RuntimeException{
+public class APIException extends RuntimeException {
 
   /**
    * Error code
    */
-  private String errorCode;
+  private final String errorCode;
 
   /**
    * http status code
    */
-  private int status;
+  private final int status;
 
   public APIException(String message, String errorCode, int status) {
     super(message);
@@ -23,6 +23,7 @@ public class APIException extends RuntimeException{
 
   /**
    * Get the error code
+   *
    * @return error code
    */
   public String getErrorCode() {
@@ -31,6 +32,7 @@ public class APIException extends RuntimeException{
 
   /**
    * get http status code
+   *
    * @return status code
    */
   public int getStatus() {

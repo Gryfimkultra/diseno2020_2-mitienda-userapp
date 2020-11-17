@@ -175,12 +175,12 @@ public class ProductStore implements Serializable {
   @Override
   public String toString() {
     return "ProductStore{" +
-        "id=" + id +
-        ", product=" + product +
-        ", stock=" + stock +
-        ", price=" + price +
-        ", category=" + category +
-        ", store=" + store +
-        '}';
+            "id=" + id +
+            ", product=" + product +
+            ", stock=" + stock +
+            ", price=" + price +
+            ", category=" + category +
+            ", store=" + store +
+            '}';
   }
 }

@@ -1,10 +1,8 @@
 package co.edu.eam.disenosoftware.mitienda.view.controllers;
 
 import co.edu.eam.disenosoftware.mitienda.model.entities.Order;
-import co.edu.eam.disenosoftware.mitienda.model.entities.User;
 import co.edu.eam.disenosoftware.mitienda.repositories.UserRepository;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,17 +18,18 @@ public class HistoryOrdersController {
   /**
    * User Repository
    */
-  public HistoryOrdersController(){
+  public HistoryOrdersController() {
     userRepository = new UserRepository();
   }
 
   /**
    * get orders user
+   *
    * @param userId user id
    * @return list orders user
-   * @throws IOException exception
+   * @ exception
    */
-  public List<Order> getOrderList(Long userId) throws IOException {
+  public List<Order> getOrderList(Long userId) {
     userRepository = new UserRepository();
     return userRepository.ordersUser(userId);
   }

@@ -14,6 +14,7 @@ public class APIErrorHandler {
 
   /**
    * parse error response to an APIException
+   *
    * @param errorResponse
    * @return
    */

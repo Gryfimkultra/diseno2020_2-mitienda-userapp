@@ -17,10 +17,11 @@ import java.util.List;
  */
 public interface UserAPIClient {
 
-  public static final String USER_URL="/api/users/";
+  String USER_URL = "/api/users/";
 
   /**
    * User login - Web Services
+   *
    * @param request UserLoginRequest
    */
   @POST(USER_URL + "login")
@@ -28,6 +29,7 @@ public interface UserAPIClient {
 
   /**
    * User Register - Web Services
+   *
    * @param request user
    */
   @POST(USER_URL + "register")
@@ -35,6 +37,7 @@ public interface UserAPIClient {
 
   /**
    * User Orders - Web Services
+   *
    * @param userId UserOrdersRequest
    * @return list Orders
    */

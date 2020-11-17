@@ -5,7 +5,6 @@ import co.edu.eam.disenosoftware.mitienda.model.entities.ProductStore;
 import co.edu.eam.disenosoftware.mitienda.repositories.CategoryRepository;
 import co.edu.eam.disenosoftware.mitienda.repositories.ProductStoresRepository;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -16,19 +15,19 @@ public class StoreHomeController {
   /**
    * Product Store Repository
    */
-  private ProductStoresRepository productStoresRepository;
-  private CategoryRepository categoryRepository;
+  private final ProductStoresRepository productStoresRepository;
+  private final CategoryRepository categoryRepository;
 
   public StoreHomeController() {
     productStoresRepository = new ProductStoresRepository();
     categoryRepository = new CategoryRepository();
   }
 
-  public List<ProductStore> getProductsStore(Long id) throws IOException {
+  public List<ProductStore> getProductsStore(Long id) {
     return productStoresRepository.getAllProductStoreByStoreId(id);
   }
 
-  public List<Category> getStoreCategories(Long id) throws IOException {
+  public List<Category> getStoreCategories(Long id) {
     return categoryRepository.getCategoriesByStoreId(id);
   }
 

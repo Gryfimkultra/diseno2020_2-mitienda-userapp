@@ -27,20 +27,20 @@ public class StoreHomePage extends Page {
   Long searchCategory;
 
   @Override
-  public void init() throws Exception {
+  public void init() {
 
     controller = new StoreHomeController();
 
     searchCategory = LocalStorage.getData("searchCategory", Long.class);
 
-    Long storeId =  LocalStorage.getData("storeId", Long.class);
+    Long storeId = LocalStorage.getData("storeId", Long.class);
 
     this.categories = controller.getStoreCategories(storeId);
     this.productStores = controller.getProductsStore(storeId);
   }
 
   @Override
-  public JComponent buildContent() throws Exception {
+  public JComponent buildContent() {
 
     JPanel containerPanel = new JPanel();
     containerPanel.setOpaque(false);
@@ -55,7 +55,7 @@ public class StoreHomePage extends Page {
 
     categoriesPanel.setBackground(Color.WHITE);
 
-    for (Category category: categories){
+    for (Category category : categories) {
       StoreHomeCategoriesWidget widget = new StoreHomeCategoriesWidget(category, this);
       categoriesPanel.add(widget);
     }
@@ -101,16 +101,16 @@ public class StoreHomePage extends Page {
     /**
      * Products Store Per Category WithOut Search
      */
-    else{
+    else {
 
       List<StoreHomeProductWidget> productWidgetsHorizontal = new ArrayList<>();
 
-        for (ProductStore productStore : productStores) {
-          if (productStore.getCategory().getId().equals(searchCategory)) {
-            StoreHomeProductWidget widget = new StoreHomeProductWidget(productStore, this);
-            productWidgetsHorizontal.add(widget);
-          }
+      for (ProductStore productStore : productStores) {
+        if (productStore.getCategory().getId().equals(searchCategory)) {
+          StoreHomeProductWidget widget = new StoreHomeProductWidget(productStore, this);
+          productWidgetsHorizontal.add(widget);
         }
+      }
 
       ListView<JComponent> listView = new ListView(productWidgetsHorizontal, ListView.ListViewOrientation.VERTICAL);
       listView.setPreferredSize(new Dimension(listView.getMaximumSize().width, 740));
@@ -126,7 +126,7 @@ public class StoreHomePage extends Page {
   }
 
   @Override
-  public JComponent buildHeader() throws Exception {
+  public JComponent buildHeader() {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBackground(Constants.COLOR_GREEN);
     panel.setMaximumSize(new Dimension(500, 50));
@@ -134,21 +134,21 @@ public class StoreHomePage extends Page {
     JLabel label = new JLabel(productStores.get(0).getStore().getName());
     label.setForeground(Color.WHITE);
     label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 20));
-    label.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+    label.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     label.setCursor(new Cursor(Cursor.HAND_CURSOR));
     label.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
         LocalStorage.saveData("searchCategory", null);
         try {
           refresh();
-        }catch (Exception e){
+        } catch (Exception e) {
           e.printStackTrace();
         }
       }
     });
 
     JLabel cartIcon = new JLabel(new ImageIcon(ImageUtil.class.getClassLoader().getResource("images/shopping-cart.png")));
-    cartIcon.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+    cartIcon.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     cartIcon.setCursor(new Cursor(Cursor.HAND_CURSOR));
     cartIcon.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -162,22 +162,22 @@ public class StoreHomePage extends Page {
   }
 
   @Override
-  public JComponent buildFooter() throws Exception {
+  public JComponent buildFooter() {
     return null;
   }
 
-  public void shoppingCart (Long storeId){
+  public void shoppingCart(Long storeId) {
 
     Map<String, Object> params = new HashMap<>();
     params.put("storeId", productStores.get(0).getStore().getId());
 
     LocalStorage.saveData("storeId", productStores.get(0).getStore().getId());
 
-    Navigator.goToFrame("ShoppingCartPage",params);
+    Navigator.goToFrame("ShoppingCartPage", params);
   }
 
   @Override
-  public void refresh() throws Exception {
+  public void refresh() {
     super.refresh();
   }
 }

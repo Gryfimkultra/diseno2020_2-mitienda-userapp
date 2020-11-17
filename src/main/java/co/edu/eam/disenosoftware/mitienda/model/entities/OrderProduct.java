@@ -40,6 +40,7 @@ public class OrderProduct implements Serializable {
 
   /**
    * Constructor
+   *
    * @param order
    * @param productStore
    * @param quantity
@@ -145,11 +146,11 @@ public class OrderProduct implements Serializable {
   @Override
   public String toString() {
     return "OrderProduct{" +
-        "id=" + id +
-        ", order=" + order +
-        ", productStore=" + productStore +
-        ", quantity=" + quantity +
-        ", state='" + state + '\'' +
-        '}';
+            "id=" + id +
+            ", order=" + order +
+            ", productStore=" + productStore +
+            ", quantity=" + quantity +
+            ", state='" + state + '\'' +
+            '}';
   }
 }

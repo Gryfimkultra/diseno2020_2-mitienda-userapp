@@ -9,20 +9,20 @@ import co.edu.eam.disenosoftware.mitienda.view.lib.Widget;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
-public class ShoppingCartDetailWidget extends Widget <ShoppingCartProduct> {
+public class ShoppingCartDetailWidget extends Widget<ShoppingCartProduct> {
 
   private ShoppingCartController controller;
-  private Long shoppingCartId;
-  private Page shoppingCardPage;
+  private final Long shoppingCartId;
+  private final Page shoppingCardPage;
 
-  public ShoppingCartDetailWidget(ShoppingCartProduct data,Long idShoppingCart,Page page){
+  public ShoppingCartDetailWidget(ShoppingCartProduct data, Long idShoppingCart, Page page) {
     super(data);
-    shoppingCartId=idShoppingCart;
-    shoppingCardPage=page;
+    shoppingCartId = idShoppingCart;
+    shoppingCardPage = page;
 
   }
+
   @Override
   public void build() {
     ImageIcon image = ImageUtil.loadFromURL(Constants.PRODUCT_IMAGE_URL +
@@ -36,35 +36,23 @@ public class ShoppingCartDetailWidget extends Widget <ShoppingCartProduct> {
 
     this.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
-    this.setBackground(new Color(255,255,255));
+    this.setBackground(new Color(255, 255, 255));
 
-    controller=new ShoppingCartController();
+    controller = new ShoppingCartController();
     btnDeleteShoppingCardProduct.setText("Eliminar");
-    btnDeleteShoppingCardProduct.setBackground(new Color(220,53,69));
-    btnDeleteShoppingCardProduct.setForeground(new Color(255,255,255));
+    btnDeleteShoppingCardProduct.setBackground(new Color(220, 53, 69));
+    btnDeleteShoppingCardProduct.setForeground(new Color(255, 255, 255));
 
     btnDeleteShoppingCardProduct.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println(data.getProduct().getId());
-        try {
-
-          System.out.println(shoppingCartId);
-
-          controller.deleteShoppingCart(shoppingCartId,data.getId());
-
-          shoppingCardPage.refresh();
-
-        } catch (IOException e) {
-          e.printStackTrace();
-        } catch (Exception xd) {
-          xd.printStackTrace();
-        }
+        controller.deleteShoppingCart(shoppingCartId, data.getId());
+        shoppingCardPage.refresh();
       }
     });
 
-    String nombreProducto=data.getProduct().getProduct().getName();
-    nombreProducto=nombreProducto.length()>=18?nombreProducto.substring(0,15) + "...":nombreProducto;
-   // lblNameProduct.setText(data.getProduct().getProduct().getName());
+    String nombreProducto = data.getProduct().getProduct().getName();
+    nombreProducto = nombreProducto.length() >= 18 ? nombreProducto.substring(0, 15) + "..." : nombreProducto;
+    // lblNameProduct.setText(data.getProduct().getProduct().getName());
     lblNameProduct.setText(nombreProducto);
     lblPrice.setText("$ " + data.getProduct().getPrice());
 
@@ -75,7 +63,7 @@ public class ShoppingCartDetailWidget extends Widget <ShoppingCartProduct> {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblImgProduct, javax.swing.GroupLayout.DEFAULT_SIZE,100, Short.MAX_VALUE)
+                                    .addComponent(lblImgProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                             .addGap(0, 0, Short.MAX_VALUE)
                                             .addComponent(btnDeleteShoppingCardProduct))

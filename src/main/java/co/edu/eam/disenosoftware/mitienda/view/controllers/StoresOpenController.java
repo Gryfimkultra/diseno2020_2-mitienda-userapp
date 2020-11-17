@@ -3,7 +3,6 @@ package co.edu.eam.disenosoftware.mitienda.view.controllers;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Store;
 import co.edu.eam.disenosoftware.mitienda.repositories.StoresRepository;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -14,18 +13,19 @@ public class StoresOpenController {
   /**
    * stores respository
    */
-  private StoresRepository storesRepository;
+  private final StoresRepository storesRepository;
 
-  public StoresOpenController () {
+  public StoresOpenController() {
     storesRepository = new StoresRepository();
   }
 
   /**
    * Get all open stores
+   *
    * @return listo of stores open
-   * @throws IOException
+   * @
    */
-  public List<Store> getOpenStores () throws IOException {
+  public List<Store> getOpenStores() {
     return storesRepository.getAllStoresOpen();
   }
 

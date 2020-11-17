@@ -14,115 +14,120 @@ import java.util.logging.Logger;
 
 /**
  * Navigator utilt
+ *
  * @author caferrerb
  */
 public class Navigator {
-          
-    /**
-     * current frame
-     */
-    private static String currentFrame;
-    
-    /**
-    * current params
-    */
-    private static Map<String, Object> currentParams;
-    
-    /**
-     * previous visited frame
-     */
-    private static Stack<String> previousFrames = new Stack<>();
-    
-    /**
-     *params current frame
-     */
-    private static Stack<Map<String, Object>> previousParams = new Stack<>();
-        
-    /**
-     * base pacakage of the frames
-     */
-    public static String GUI_PACKAGE =  "co.edu.eam.disenosoftware.mitienda.view.pages";
-    
-    
-    /**
-     * go to a frame
-     * @param frame frame name
-     * @param params params to send
-     * @return frame
-     */
-    public static Page goToFrame(String frame, Map<String, Object> params, boolean fromBack) {
-        
-        try {
-            Constructor ctor =  Class.forName(GUI_PACKAGE + "." + frame).getDeclaredConstructor();
-            ctor.setAccessible(true);
-            
-            Page gFrame = (Page) ctor.newInstance();
-            gFrame.setVisible(true);
-            gFrame.setTitle(frame);            
-            gFrame.setParams(params);
-            
-            if(currentFrame != null && !fromBack) {
-                previousFrames.push(new String(currentFrame));
-                previousParams.push(new HashMap<>(currentParams));
-            }
-            
-            currentFrame = frame;
-            currentParams = params;
-            
-            return gFrame;
-        } catch (Exception ex) {
-            Logger.getLogger(Navigator.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
-    /**
-     * go to a frame without params
-     * @param frame frame name
-     * @return frame
-     */
-    public static Page goToFrame(String frame) {
-        
-        try {
-            return goToFrame(frame, new HashMap<>(), false);
-        } catch (Exception ex) {
-            Logger.getLogger(Navigator.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
-    /**
-     * go to a frame iwth params
-     * @param frame frame name
-     * @return frame
-     */
-    public static Page goToFrame(String frame, Map<String, Object> params) {
-        
-        try {
-            return goToFrame(frame, params, false);
-        } catch (Exception ex) {
-            Logger.getLogger(Navigator.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
-    
-    /**
-     * Go Back
-     * @return frame 
-     */
-    public static Page goBack() {
-        try{
-            String frame = previousFrames.pop();
 
-            Map<String, Object> params = previousParams.pop();
-        
-            if(frame != null) {
-                return goToFrame(frame,params, true);
-            }
-        } catch(java.util.EmptyStackException exc) {
-            return null;
-        }
-        return null;
+  /**
+   * current frame
+   */
+  private static String currentFrame;
+
+  /**
+   * current params
+   */
+  private static Map<String, Object> currentParams;
+
+  /**
+   * previous visited frame
+   */
+  private static final Stack<String> previousFrames = new Stack<>();
+
+  /**
+   * params current frame
+   */
+  private static final Stack<Map<String, Object>> previousParams = new Stack<>();
+
+  /**
+   * base pacakage of the frames
+   */
+  public static String GUI_PACKAGE = "co.edu.eam.disenosoftware.mitienda.view.pages";
+
+
+  /**
+   * go to a frame
+   *
+   * @param frame  frame name
+   * @param params params to send
+   * @return frame
+   */
+  public static Page goToFrame(String frame, Map<String, Object> params, boolean fromBack) {
+
+    try {
+      Constructor ctor = Class.forName(GUI_PACKAGE + "." + frame).getDeclaredConstructor();
+      ctor.setAccessible(true);
+
+      Page gFrame = (Page) ctor.newInstance();
+      gFrame.setVisible(true);
+      gFrame.setTitle(frame);
+      gFrame.setParams(params);
+
+      if (currentFrame != null && !fromBack) {
+        previousFrames.push(currentFrame);
+        previousParams.push(new HashMap<>(currentParams));
+      }
+
+      currentFrame = frame;
+      currentParams = params;
+
+      return gFrame;
+    } catch (Exception ex) {
+      Logger.getLogger(Navigator.class.getName()).log(Level.SEVERE, null, ex);
     }
+    return null;
+  }
+
+  /**
+   * go to a frame without params
+   *
+   * @param frame frame name
+   * @return frame
+   */
+  public static Page goToFrame(String frame) {
+
+    try {
+      return goToFrame(frame, new HashMap<>(), false);
+    } catch (Exception ex) {
+      Logger.getLogger(Navigator.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return null;
+  }
+
+  /**
+   * go to a frame iwth params
+   *
+   * @param frame frame name
+   * @return frame
+   */
+  public static Page goToFrame(String frame, Map<String, Object> params) {
+
+    try {
+      return goToFrame(frame, params, false);
+    } catch (Exception ex) {
+      Logger.getLogger(Navigator.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return null;
+  }
+
+
+  /**
+   * Go Back
+   *
+   * @return frame
+   */
+  public static Page goBack() {
+    try {
+      String frame = previousFrames.pop();
+
+      Map<String, Object> params = previousParams.pop();
+
+      if (frame != null) {
+        return goToFrame(frame, params, true);
+      }
+    } catch (java.util.EmptyStackException exc) {
+      return null;
+    }
+    return null;
+  }
 }

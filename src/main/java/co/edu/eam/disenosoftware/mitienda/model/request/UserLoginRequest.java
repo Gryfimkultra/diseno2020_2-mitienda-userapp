@@ -17,6 +17,7 @@ public class UserLoginRequest {
 
   /**
    * Get username
+   *
    * @return username
    */
   public String getUsername() {
@@ -25,6 +26,7 @@ public class UserLoginRequest {
 
   /**
    * Ser username from user
+   *
    * @param username username
    */
   public void setUsername(String username) {
@@ -33,6 +35,7 @@ public class UserLoginRequest {
 
   /**
    * Get password from user
+   *
    * @return password
    */
   public String getPassword() {
@@ -41,6 +44,7 @@ public class UserLoginRequest {
 
   /**
    * Set password from user
+   *
    * @param password password
    */
   public void setPassword(String password) {
@@ -50,6 +54,7 @@ public class UserLoginRequest {
 
   /**
    * Constructor
+   *
    * @param username username
    * @param password password
    */

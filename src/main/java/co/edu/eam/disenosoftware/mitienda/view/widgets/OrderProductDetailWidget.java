@@ -20,8 +20,8 @@ public class OrderProductDetailWidget extends Widget<OrderProduct> {
 
     this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
     ImageIcon image = ImageUtil.loadFromURL(Constants.PRODUCT_IMAGE_URL +
-            data.getProductStore().getProduct().getId() + "_small.jpg",
-            80,120);
+                    data.getProductStore().getProduct().getId() + "_small.jpg",
+            80, 120);
 
     this.setAlignmentX(0.0f);
     JLabel lblImage = new JLabel(image);
