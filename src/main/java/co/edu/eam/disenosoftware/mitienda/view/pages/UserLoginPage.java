@@ -1,8 +1,6 @@
 package co.edu.eam.disenosoftware.mitienda.view.pages;
 
-import co.edu.eam.disenosoftware.mitienda.model.entities.User;
 import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
-import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
 import co.edu.eam.disenosoftware.mitienda.view.controllers.UserLoginController;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
@@ -64,8 +62,7 @@ public class UserLoginPage extends Page {
         UserLoginRequest userLoginRequest = new UserLoginRequest(userName.getText(), password.getText());
 
         try {
-          User user = userLoginController.userLogin(userLoginRequest);
-          LocalStorage.saveData("userId", user.getId());
+          userLoginController.userLogin(userLoginRequest);
         } catch (IOException e) {
           e.printStackTrace();
         }

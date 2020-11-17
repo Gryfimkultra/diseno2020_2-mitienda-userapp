@@ -33,6 +33,8 @@ public class UserLoginController {
 
     User user = userRepository.loginUser(userLoginRequest);
 
+    LocalStorage.saveData("userId", user.getId());
+
     return user;
   }
 
