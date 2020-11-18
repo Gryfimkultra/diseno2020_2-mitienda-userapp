@@ -26,8 +26,8 @@ public class ShoppingCartPage extends Page {
   @Override
   public void init() {
     controller = new ShoppingCartController();
-    Long storeId = 1l;
-    Long userId = 3l;
+    Long storeId = (Long) getParam("storeId");
+    Long userId = LocalStorage.getData("userId", Long.class);
 
     this.shoppingCart = controller.getShoppingCard(storeId, userId);
     System.out.println(shoppingCart.getId());
@@ -40,18 +40,22 @@ public class ShoppingCartPage extends Page {
     JPanel panelFlowScrollProduct = new javax.swing.JPanel();
     JPanel panelGridScrollProduct = new javax.swing.JPanel();
 
-    panelGridScrollProduct.setLayout(new java.awt.GridLayout(this.shoppingCart.getProduct().size() / 2, 2, 5, 5));
 
-    for (ShoppingCartProduct shoppingCartProduct : this.shoppingCart.getProduct()) {
 
-      if (this.shoppingCart.getProduct() != null) {
+    if(this.shoppingCart.getProduct()!=null){
+      panelGridScrollProduct.setLayout(new java.awt.GridLayout(this.shoppingCart.getProduct().size() / 2, 2, 5, 5));
+      for (ShoppingCartProduct shoppingCartProduct : this.shoppingCart.getProduct()) {
+
+
         ShoppingCartDetailWidget wdgt = new ShoppingCartDetailWidget(shoppingCartProduct, shoppingCart.getId(), this);
         panelGridScrollProduct.add(wdgt);
-      } else {
-        System.out.println("Empty");
+
       }
+    }else{
+      System.out.println("pablo es gei");
 
     }
+
     panelFlowScrollProduct.add(panelGridScrollProduct);
     JScrollPane scrollPane = new JScrollPane(panelFlowScrollProduct);
 
