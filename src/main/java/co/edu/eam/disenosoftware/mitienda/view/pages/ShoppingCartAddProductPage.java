@@ -11,6 +11,7 @@ import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class ShoppingCartAddProductPage extends Page {
   int quantity;
   Long userId;
   ResourceBundle resourceBundle;
+  NumberFormat formatter;
 
   @Override
   public void init() {
@@ -37,6 +39,8 @@ public class ShoppingCartAddProductPage extends Page {
     //Internalizacion I18N
     Locale defauLocale = Locale.getDefault();
     resourceBundle = ResourceBundle.getBundle("messages", defauLocale);
+
+    formatter = NumberFormat. getCurrencyInstance();
   }
 
   @Override
@@ -73,7 +77,8 @@ public class ShoppingCartAddProductPage extends Page {
     lblNombre.setFont(new Font(lblNombre.getFont().getFontName(), Font.BOLD, 20));
     lblNombre.setBorder(BorderFactory.createMatteBorder(10, 10, 5, 10, Color.WHITE));
 
-    JLabel lblPrecio = new JLabel("$" + productStore.getPrice());
+    String moneyString =formatter. format(productStore.getPrice());
+    JLabel lblPrecio = new JLabel(moneyString);
     lblPrecio.setOpaque(true);
     lblPrecio.setBackground(Color.WHITE);
     lblPrecio.setFont(new Font(lblPrecio.getFont().getFontName(), Font.BOLD, 20));

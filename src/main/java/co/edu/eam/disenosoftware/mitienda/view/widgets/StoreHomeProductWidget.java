@@ -8,16 +8,14 @@ import co.edu.eam.disenosoftware.mitienda.view.lib.Widget;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 
 public class StoreHomeProductWidget extends Widget<ProductStore> {
 
-  Page page;
-
   public StoreHomeProductWidget(ProductStore data, Page page) {
-    super(data);
-    this.page = page;
+    super(data, page);
   }
 
   @Override
@@ -51,7 +49,9 @@ public class StoreHomeProductWidget extends Widget<ProductStore> {
     productName.setMaximumSize(new Dimension(140, productName.getPreferredSize().height));
     productName.setPreferredSize(new Dimension(140, productName.getPreferredSize().height));
 
-    JLabel productPrice = new JLabel("$" + data.getPrice());
+    NumberFormat formatter = NumberFormat. getCurrencyInstance();
+    String moneyString =formatter. format(data.getPrice());
+    JLabel productPrice = new JLabel(moneyString);
     productPrice.setBackground(Color.WHITE);
     productPrice.setMaximumSize(new Dimension(150, productPrice.getPreferredSize().height));
     productPrice.setPreferredSize(new Dimension(150, productPrice.getPreferredSize().height));
@@ -74,7 +74,7 @@ public class StoreHomeProductWidget extends Widget<ProductStore> {
     Map<String, Object> params = new HashMap<>();
     params.put("product", data);
 
-    page.goToFrame("ShoppingCartAddProductPage", params);
+    parentPage.goToFrame("ShoppingCartAddProductPage", params);
   }
 
 }
