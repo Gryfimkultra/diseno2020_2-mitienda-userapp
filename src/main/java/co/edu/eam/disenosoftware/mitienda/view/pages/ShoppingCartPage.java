@@ -26,8 +26,8 @@ public class ShoppingCartPage extends Page {
   @Override
   public void init() {
     controller = new ShoppingCartController();
-    Long storeId = LocalStorage.getData("storeId", Long.class);
-    Long userId = LocalStorage.getData("userId", Long.class);
+    Long storeId = 1l;
+    Long userId = 3l;
 
     this.shoppingCart = controller.getShoppingCard(storeId, userId);
     System.out.println(shoppingCart.getId());
@@ -44,7 +44,7 @@ public class ShoppingCartPage extends Page {
 
     for (ShoppingCartProduct shoppingCartProduct : this.shoppingCart.getProduct()) {
 
-      if (shoppingCartProduct != null) {
+      if (this.shoppingCart.getProduct() != null) {
         ShoppingCartDetailWidget wdgt = new ShoppingCartDetailWidget(shoppingCartProduct, shoppingCart.getId(), this);
         panelGridScrollProduct.add(wdgt);
       } else {
@@ -69,11 +69,10 @@ public class ShoppingCartPage extends Page {
     panelHeader.setBackground(Constants.COLOR_GREEN);
 
     lblHeader.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-    lblHeader.setText("ShoppingCart");
+    lblHeader.setText(getString("shoppingcartpage.shoppingcart"));
 
     lblHeader.setForeground(new Color(255, 255, 255));
-
-    lblTotalValue.setText("Total: " + this.shoppingCart.getTotalValue());
+    lblTotalValue.setText(getString("shoppingcartpage.total") +" "+ this.shoppingCart.getTotalValue());
 
     lblTotalValue.setForeground(new Color(255, 255, 255));
 
@@ -82,7 +81,7 @@ public class ShoppingCartPage extends Page {
     lblTotalValue.setForeground(new Color(255, 255, 255));
 
     lblTotalProduct.setForeground(new Color(255, 255, 255));
-    lblTotalProduct.setText("Total Products:" + this.shoppingCart.getProduct().size());
+    lblTotalProduct.setText(getString("shoppingcartpage.totalProduct") +" "+ this.shoppingCart.getProduct().size());
 
     javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
     panelHeader.setLayout(panelHeaderLayout);
@@ -123,10 +122,11 @@ public class ShoppingCartPage extends Page {
 
     panelBuyNow.setLayout(new GridLayout(1, 0));
 
-    JButton btnBuyNow = new JButton(" Buy Now ");
+    JButton btnBuyNow = new JButton(getString("shoppingcartpage.buynow"));
     panelBuyNow.add(btnBuyNow);
     btnBuyNow.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
+
         controller.createOrden(shoppingCart.getId());
 
         Map<String, Object> params = new HashMap<>();

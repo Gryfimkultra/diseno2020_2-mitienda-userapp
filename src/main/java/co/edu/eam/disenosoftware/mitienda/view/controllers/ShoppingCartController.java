@@ -14,6 +14,7 @@ public class ShoppingCartController {
 
   public ShoppingCartController() {
     shoppingCartRepository = new ShoppingCartRepository();
+    ordersRepository=new OrdersRepository();
   }
 
   /**
@@ -37,6 +38,7 @@ public class ShoppingCartController {
   }
 
   public void createOrden(Long idShoppingcart) {
+
     ordersRepository.createOrder(idShoppingcart);
   }
 }

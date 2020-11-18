@@ -39,9 +39,7 @@ public class ShoppingCartDetailWidget extends Widget<ShoppingCartProduct> {
     this.setBackground(new Color(255, 255, 255));
 
     controller = new ShoppingCartController();
-    btnDeleteShoppingCardProduct.setText("Eliminar");
-    btnDeleteShoppingCardProduct.setBackground(new Color(220, 53, 69));
-    btnDeleteShoppingCardProduct.setForeground(new Color(255, 255, 255));
+    btnDeleteShoppingCardProduct.setIcon((new ImageIcon(ImageUtil.class.getClassLoader().getResource("images/borrar.png"))));
 
     btnDeleteShoppingCardProduct.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
