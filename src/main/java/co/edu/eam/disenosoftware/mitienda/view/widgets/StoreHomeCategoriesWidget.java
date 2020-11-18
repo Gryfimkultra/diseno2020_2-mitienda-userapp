@@ -43,11 +43,7 @@ public class StoreHomeCategoriesWidget extends Widget<Category> {
 
   public void category(Long id) {
     LocalStorage.saveData("searchCategory", id);
-    try {
-      parentPage.refresh();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    parentPage.refresh();
 
   }
 }

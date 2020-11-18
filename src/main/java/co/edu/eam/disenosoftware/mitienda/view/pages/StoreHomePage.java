@@ -137,11 +137,7 @@ public class StoreHomePage extends Page {
     label.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
         LocalStorage.saveData("searchCategory", null);
-        try {
-          refresh();
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
+        refresh();
       }
     });
 
