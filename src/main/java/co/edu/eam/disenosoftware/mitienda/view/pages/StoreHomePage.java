@@ -31,8 +31,11 @@ public class StoreHomePage extends Page {
 
     controller = new StoreHomeController();
 
+    //searchCategory = (Long) getParam("searchCategory");
+
     searchCategory = LocalStorage.getData("searchCategory", Long.class);
 
+    //Long storeId = (Long) getParam("storeId");
     Long storeId = LocalStorage.getData("storeId", Long.class);
 
     this.categories = controller.getStoreCategories(storeId);
@@ -59,7 +62,6 @@ public class StoreHomePage extends Page {
       StoreHomeCategoriesWidget widget = new StoreHomeCategoriesWidget(category, this);
       categoriesPanel.add(widget);
     }
-
     JScrollPane categoriesScrollPane = new JScrollPane(categoriesPanel);
     categoriesScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
     categoriesScrollPane.setBackground(Constants.COLOR_GREEN);
@@ -86,8 +88,8 @@ public class StoreHomePage extends Page {
           }
         }
         ListView<JComponent> listViewHorizontal = new ListView(productWidgetsHorizontal, ListView.ListViewOrientation.HORIZONTAL);
-        listViewHorizontal.setPreferredSize(new Dimension(320, 270));
-        listViewHorizontal.setMaximumSize(new Dimension(320, 270));
+        listViewHorizontal.setPreferredSize(new Dimension(320, 175));
+        listViewHorizontal.setMaximumSize(new Dimension(320, 175));
         listViewHorizontal.setBorder(BorderFactory.createTitledBorder(category.getName()));
 
         productWidgetsVertical.add(listViewHorizontal);
