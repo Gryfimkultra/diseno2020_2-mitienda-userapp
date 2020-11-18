@@ -10,12 +10,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserLoginPage extends Page {
 
   @Override
   public void init() {
-
+    Map<String, Object> params = new HashMap<>();
+    params.put("storeId", 3l);
+    goToFrame("StoreHomePage", params);
   }
 
 

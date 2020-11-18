@@ -45,7 +45,6 @@ public class StoreHomeCategoriesWidget extends Widget<Category> {
   }
 
   public void category(Long id) {
-    System.out.println(id);
     LocalStorage.saveData("searchCategory", id);
     try {
       page.refresh();

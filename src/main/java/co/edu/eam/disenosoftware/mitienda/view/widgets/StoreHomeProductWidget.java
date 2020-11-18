@@ -3,8 +3,6 @@ package co.edu.eam.disenosoftware.mitienda.view.widgets;
 import co.edu.eam.disenosoftware.mitienda.config.Constants;
 import co.edu.eam.disenosoftware.mitienda.model.entities.ProductStore;
 import co.edu.eam.disenosoftware.mitienda.util.ImageUtil;
-import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
-import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Widget;
 
@@ -76,10 +74,7 @@ public class StoreHomeProductWidget extends Widget<ProductStore> {
     Map<String, Object> params = new HashMap<>();
     params.put("product", data);
 
-    LocalStorage.saveData("productStore", data);
-
-    Navigator.goToFrame("ShoppingCartAddProductPage", params);
-    page.dispose();
+    page.goToFrame("ShoppingCartAddProductPage", params);
   }
 
 }
