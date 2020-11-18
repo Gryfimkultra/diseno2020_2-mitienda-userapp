@@ -59,9 +59,10 @@ public class Navigator {
       ctor.setAccessible(true);
 
       Page gFrame = (Page) ctor.newInstance();
-      gFrame.setVisible(true);
-      gFrame.setTitle(frame);
       gFrame.setParams(params);
+      gFrame.buildPage();
+      gFrame.setTitle(frame);
+      gFrame.setVisible(true);
 
       if (currentFrame != null && !fromBack) {
         previousFrames.push(currentFrame);

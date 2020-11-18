@@ -48,12 +48,6 @@ public abstract class Page extends JFrame {
     params = new HashMap<>();
     Locale locale = Locale.getDefault();
     resourceBundle = ResourceBundle.getBundle("messages", locale);
-    try {
-      buildPage();
-    } catch (Exception exc) {
-      exc.printStackTrace();
-    }
-
   }
 
   /**
@@ -89,7 +83,7 @@ public abstract class Page extends JFrame {
   /**
    * Method to build the whole page
    */
-  private void buildPage() {
+  public void buildPage() {
     buildMenu();
     init();
     JComponent content = buildContent();

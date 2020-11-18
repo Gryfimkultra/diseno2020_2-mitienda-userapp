@@ -31,6 +31,7 @@ public class HistoryOrdersPage extends Page {
     historyOrdersController = new HistoryOrdersController();
 
     Long userId = (Long) getParam("userId");
+    userId = 3l;
     List<Order> orderList = historyOrdersController.getOrderList(userId);
 
     JPanel panelGeneral = new JPanel();

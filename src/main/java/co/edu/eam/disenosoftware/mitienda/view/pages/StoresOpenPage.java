@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * stores open page
@@ -64,7 +66,13 @@ public class StoresOpenPage extends Page {
     panelHeader.setLayout(new GridLayout(1, 1));
     panelHeader.setBackground(Constants.COLOR_GREEN);
 
-    JLabel label = new JLabel("Tus tiendas cercanas");
+    //Internacionalizacion I18N
+    //es_US, en_
+    //Locale defaultLocale = Locale.getDefault();
+    //ResourceBundle resourceBundle = ResourceBundle.getBundle("messages", defaultLocale);
+    //ResourceBundle
+
+    JLabel label = new JLabel(getString("storesopenpage.title"));
     label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 20));
     label.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
     label.setPreferredSize(new Dimension(panelHeader.getPreferredSize().width, 50));
