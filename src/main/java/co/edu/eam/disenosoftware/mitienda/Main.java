@@ -20,11 +20,8 @@ public class Main {
   public static void main(String[] args) {
 
     Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler());
-
-    LocalStorage.saveData("storeId", 3l);
-    LocalStorage.saveData("userId", 3l);
-
-    Navigator.goToFrame("StoreHomePage");
+    Navigator.goToFrame("UserLoginPage");
+    
   }
 
 }
