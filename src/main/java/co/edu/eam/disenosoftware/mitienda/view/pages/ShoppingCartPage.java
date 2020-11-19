@@ -130,7 +130,10 @@ public class ShoppingCartPage extends Page {
         controller.createOrden(shoppingCart.getId());
 
         Map<String, Object> params = new HashMap<>();
+        params.put("storeId", shoppingCart.getStore().getId());
+
         LocalStorage.saveData("storeId", shoppingCart.getStore().getId());
+
         Navigator.goToFrame("HistoryOrdersPage", params);
 
       }
