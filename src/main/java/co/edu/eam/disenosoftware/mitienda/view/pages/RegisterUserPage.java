@@ -2,7 +2,6 @@ package co.edu.eam.disenosoftware.mitienda.view.pages;
 
 import co.edu.eam.disenosoftware.mitienda.model.entities.User;
 import co.edu.eam.disenosoftware.mitienda.view.controllers.UserRegistreController;
-import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.widgets.TextPrompt;
 
@@ -10,8 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class RegisterUserPage extends Page {
   @Override
@@ -26,11 +23,8 @@ public class RegisterUserPage extends Page {
     scrollPane.setLayout(null);
     scrollPane.setBackground(Color.white);
 
-    Locale defaulLocale = Locale.getDefault();
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("messages", defaulLocale);
-
-    JLabel tittle = new JLabel("<html><h2><strong>" + resourceBundle.getString("userregisterpage.title") + "</strong></h2></html>");
-    JLabel description = new JLabel(("<html><h3><font color='gray'><strong>" + resourceBundle.getString("userregisterpage.lets") + "</strong></font></h3></html>"));
+    JLabel tittle = new JLabel("<html><h2><strong>" + getString("userregisterpage.title") + "</strong></h2></html>");
+    JLabel description = new JLabel(("<html><h3><font color='gray'><strong>" + getString("userregisterpage.lets") + "</strong></font></h3></html>"));
 
     JTextField userName = new JTextField("");
     userName.setBorder(null);
@@ -41,17 +35,17 @@ public class RegisterUserPage extends Page {
     JPasswordField password = new JPasswordField("");
     password.setBorder(null);
 
-    TextPrompt placeUser = new TextPrompt(resourceBundle.getString("userregisterpage.username"), userName);
-    TextPrompt placePassword = new TextPrompt(resourceBundle.getString("userregisterpage.password"), password);
-    TextPrompt placePhone = new TextPrompt(resourceBundle.getString("userregisterpage.phone"), phone);
-    TextPrompt placeEmail = new TextPrompt(resourceBundle.getString("userregisterpage.email"), emailAddress);
+    TextPrompt placeUser = new TextPrompt(getString("userregisterpage.username"), userName);
+    TextPrompt placePassword = new TextPrompt(getString("userregisterpage.password"), password);
+    TextPrompt placePhone = new TextPrompt(getString("userregisterpage.phone"), phone);
+    TextPrompt placeEmail = new TextPrompt(getString("userregisterpage.email"), emailAddress);
 
     JSeparator line1 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line2 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line3 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line4 = new JSeparator(SwingConstants.HORIZONTAL);
 
-    JButton buttonSignIn = new JButton(resourceBundle.getString("userregisterpage.buttonsignup"));
+    JButton buttonSignIn = new JButton(getString("userregisterpage.buttonsignup"));
     buttonSignIn.setOpaque(true);
     buttonSignIn.setBorderPainted(false);
     buttonSignIn.setBackground(new Color(95, 144, 81).brighter());
@@ -110,9 +104,9 @@ public class RegisterUserPage extends Page {
 
         userRegistreController.userRegister(user);
 
-        JOptionPane.showMessageDialog(null, resourceBundle.getString("userregisterpage.userRegistred"));
+        JOptionPane.showMessageDialog(null, getString("userregisterpage.userRegistred"));
 
-        Navigator.goToFrame("UserLoginPage");
+        goBack();
       }
     });
 
@@ -126,18 +120,15 @@ public class RegisterUserPage extends Page {
     panel.setLayout(new BorderLayout());
     panel.setBackground(Color.white);
 
-    Locale defaulLocale = Locale.getDefault();
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("messages", defaulLocale);
-
     panel.setMaximumSize(new Dimension(500, 200));
 
-    JLabel signIn = new JLabel("<html>" + resourceBundle.getString("userloginpage.singin") + "</html>");
-    JLabel signUp = new JLabel("<html><font color='green'><strong>" + resourceBundle.getString("userloginpage.singup") + "</strong></font></html>");
+    JLabel signIn = new JLabel("<html>" + getString("userloginpage.singin") + "</html>");
+    JLabel signUp = new JLabel("<html><font color='green'><strong>" + getString("userloginpage.singup") + "</strong></font></html>");
 
     signIn.addMouseListener(new MouseAdapter() {
       public void mouseClicked(MouseEvent e) {
 
-        Navigator.goToFrame("UserLoginPage");
+        goBack();
       }
     });
 
