@@ -50,7 +50,7 @@ public class StoresOpenPage extends Page {
     panlerStores.setLayout(new GridLayout(stores.size(), 1));
 
     for (Store store : stores) {
-      StoresOpenWidget wdgt = new StoresOpenWidget(store);
+      StoresOpenWidget wdgt = new StoresOpenWidget(store,this);
       panlerStores.add(wdgt);
     }
 
