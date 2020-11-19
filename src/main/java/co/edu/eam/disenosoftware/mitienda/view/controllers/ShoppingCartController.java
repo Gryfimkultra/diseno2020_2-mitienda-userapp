@@ -26,19 +26,21 @@ public class ShoppingCartController {
    */
   public ShoppingCart getShoppingCard(Long storeId, Long userId) {
 
-    ShoppingCart shoppingCart = shoppingCartRepository.getShoppingCartByUserIdAndStoreId(storeId, userId);
-
-    return shoppingCart;
+    try {
+      ShoppingCart shoppingCart = shoppingCartRepository.getShoppingCartByUserIdAndStoreId(storeId, userId);
+      return shoppingCart;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 
   public void deleteShoppingCart(Long idShoppingCart, Long idShoppingCartProduct) {
-
     shoppingCartRepository.deleteProductToShoppingCart(idShoppingCart, idShoppingCartProduct);
 
   }
 
   public void createOrden(Long idShoppingcart) {
-
     ordersRepository.createOrder(idShoppingcart);
   }
 }

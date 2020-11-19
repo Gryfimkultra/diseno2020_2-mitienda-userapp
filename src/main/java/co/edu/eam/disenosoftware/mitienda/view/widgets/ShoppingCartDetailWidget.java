@@ -9,22 +9,23 @@ import co.edu.eam.disenosoftware.mitienda.view.lib.Widget;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.NumberFormat;
 
 public class ShoppingCartDetailWidget extends Widget<ShoppingCartProduct> {
 
   private ShoppingCartController controller;
   private final Long shoppingCartId;
-  private final Page shoppingCardPage;
 
   public ShoppingCartDetailWidget(ShoppingCartProduct data, Long idShoppingCart, Page page) {
-    super(data);
+    super(data,page);
     shoppingCartId = idShoppingCart;
-    shoppingCardPage = page;
 
   }
 
   @Override
   public void build() {
+    NumberFormat formatter = NumberFormat. getCurrencyInstance();
+
     ImageIcon image = ImageUtil.loadFromURL(Constants.PRODUCT_IMAGE_URL +
                     data.getProduct().getProduct().getId() + "_small.jpg",
             70, 80);
@@ -43,8 +44,9 @@ public class ShoppingCartDetailWidget extends Widget<ShoppingCartProduct> {
 
     btnDeleteShoppingCardProduct.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
+
         controller.deleteShoppingCart(shoppingCartId, data.getId());
-        shoppingCardPage.refresh();
+        parentPage.refresh();
       }
     });
 
@@ -52,7 +54,8 @@ public class ShoppingCartDetailWidget extends Widget<ShoppingCartProduct> {
     nombreProducto = nombreProducto.length() >= 18 ? nombreProducto.substring(0, 15) + "..." : nombreProducto;
     // lblNameProduct.setText(data.getProduct().getProduct().getName());
     lblNameProduct.setText(nombreProducto);
-    lblPrice.setText("$ " + data.getProduct().getPrice());
+    String moneyString =formatter. format(data.getProduct().getPrice());
+    lblPrice.setText(moneyString);
 
     javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(this);
     this.setLayout(jPanel3Layout);
