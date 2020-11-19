@@ -134,7 +134,7 @@ public class ShoppingCartPage extends Page {
 
         LocalStorage.saveData("storeId", shoppingCart.getStore().getId());
 
-        Navigator.goToFrame("HistoryOrdersPage", params);
+        goToFrame("HistoryOrdersPage", params);
 
       }
     });
