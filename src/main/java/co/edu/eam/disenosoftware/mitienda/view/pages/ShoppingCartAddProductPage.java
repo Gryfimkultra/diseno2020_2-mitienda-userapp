@@ -36,10 +36,6 @@ public class ShoppingCartAddProductPage extends Page {
 
     quantity = 0;
 
-    //Internalizacion I18N
-    Locale defauLocale = Locale.getDefault();
-    resourceBundle = ResourceBundle.getBundle("messages", defauLocale);
-
     formatter = NumberFormat. getCurrencyInstance();
   }
 
@@ -89,7 +85,7 @@ public class ShoppingCartAddProductPage extends Page {
     panelCantidad.setPreferredSize(new Dimension(334, 300));
     panelCantidad.setMaximumSize(new Dimension(334, 300));
 
-    JLabel lblQuantity = new JLabel(resourceBundle.getString("shoppingcartaddpage.quantity"));
+    JLabel lblQuantity = new JLabel(getString("shoppingcartaddpage.quantity"));
     lblQuantity.setFont(new Font(lblQuantity.getFont().getFontName(), Font.BOLD, 20));
     lblQuantity.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -167,7 +163,7 @@ public class ShoppingCartAddProductPage extends Page {
     panel.setPreferredSize(new Dimension(500, panel.getPreferredSize().height));
     panel.setMaximumSize(new Dimension(500, 50));
 
-    JLabel label = new JLabel(resourceBundle.getString("shoppingcartaddpage.addtoshoppingcart"));
+    JLabel label = new JLabel(getString("shoppingcartaddpage.addtoshoppingcart"));
     label.setForeground(Color.WHITE);
     label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 20));
 
