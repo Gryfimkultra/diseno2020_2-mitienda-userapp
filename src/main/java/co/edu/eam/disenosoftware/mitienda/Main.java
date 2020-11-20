@@ -21,7 +21,6 @@ public class Main {
 
     Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler());
     Navigator.goToFrame("UserLoginPage");
-    
   }
 
 }
