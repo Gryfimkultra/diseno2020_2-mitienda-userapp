@@ -14,7 +14,9 @@ import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 public class HistoryOrdersWidget extends Widget<Order> {
 
@@ -34,14 +36,21 @@ public class HistoryOrdersWidget extends Widget<Order> {
     panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.Y_AXIS));
     panelInfo.setBackground(Color.WHITE);
 
+    Locale defaultLocale = Locale.getDefault();
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("messages", defaultLocale);
+
     JLabel lblName = new JLabel();
-    lblName.setText("Nombre de la Tienda: " + data.getStore().getName());
+    lblName.setText(resourceBundle.getString("historyorderspage.store's_name") + data.getStore().getName());
     JLabel lblTotalProduct = new JLabel();
-    lblTotalProduct.setText("Total de productos: " + data.getProduct().size());
+    lblTotalProduct.setText(resourceBundle.getString("historyorderspage.total_products") + data.getProduct().size());
     JLabel lblTotalOrder = new JLabel(NumberFormat.getCurrencyInstance().format(data.getTotalValue()));
     JLabel lblDate = new JLabel(SimpleDateFormat.getDateInstance().format(data.getDate()));
 
-    JButton jButton = new JButton("SEE");
+    JButton jButton = new JButton();
+    jButton.setIcon(new ImageIcon(ImageUtil.class.getClassLoader().getResource("images/ver.png")));
+    jButton.setBorder(BorderFactory.createEmptyBorder(6,10,6,10));
+    jButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    jButton.setBackground(new Color(88, 214, 141 ));
 
     panelInfo.add(lblName);
     panelInfo.add(lblTotalProduct);

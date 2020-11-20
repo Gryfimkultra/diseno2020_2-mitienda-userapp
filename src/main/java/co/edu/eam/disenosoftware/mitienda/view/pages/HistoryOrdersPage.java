@@ -31,7 +31,6 @@ public class HistoryOrdersPage extends Page {
     historyOrdersController = new HistoryOrdersController();
 
     Long userId = (Long) getParam("userId");
-    userId = 3l;
     List<Order> orderList = historyOrdersController.getOrderList(userId);
 
     JPanel panelGeneral = new JPanel();
@@ -42,13 +41,13 @@ public class HistoryOrdersPage extends Page {
     JPanel panelUser2 = new JPanel();
     JPanel panelUser3 = new JPanel();
 
-    JLabel label1 = new JLabel("IN_CURSE");
+    JLabel label1 = new JLabel(getString("historyorderspage.in_progress"));
     panelUser1.add(label1);
 
-    JLabel label2 = new JLabel("ORDERS_FINISHED");
+    JLabel label2 = new JLabel(getString("historyorderspage.orders_finished"));
     panelUser2.add(label2);
 
-    JLabel label3 = new JLabel("ORDERS_CANCELED");
+    JLabel label3 = new JLabel(getString("historyorderspage.orders_canceled"));
     panelUser3.add(label3);
 
     for (Order order : orderList) {
@@ -87,8 +86,8 @@ public class HistoryOrdersPage extends Page {
     panelOrder.setLayout(new GridLayout(1, 1));
     panelOrder.setBackground(Constants.COLOR_GREEN);
 
-    JLabel label = new JLabel("Order History");
-    label.setPreferredSize(new Dimension(label.getPreferredSize().width, 2));
+    JLabel label = new JLabel(getString("historyorderspage.tittle"));
+    label.setPreferredSize(new Dimension(label.getPreferredSize().width, 150));
     panelOrder.add(label);
     return panelOrder;
 
