@@ -2,6 +2,7 @@ package co.edu.eam.disenosoftware.mitienda.view.pages;
 
 import co.edu.eam.disenosoftware.mitienda.config.Constants;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Order;
+import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
 import co.edu.eam.disenosoftware.mitienda.view.controllers.HistoryOrdersController;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.widgets.HistoryOrdersWidget;
@@ -30,7 +31,7 @@ public class HistoryOrdersPage extends Page {
 
     historyOrdersController = new HistoryOrdersController();
 
-    Long userId = (Long) getParam("userId");
+    Long userId = LocalStorage.getData("userId", Long.class);
     List<Order> orderList = historyOrdersController.getOrderList(userId);
 
     JPanel panelGeneral = new JPanel();
