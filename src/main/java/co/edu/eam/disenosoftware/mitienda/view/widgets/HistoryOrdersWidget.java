@@ -5,6 +5,7 @@ import co.edu.eam.disenosoftware.mitienda.model.entities.Order;
 import co.edu.eam.disenosoftware.mitienda.util.ImageUtil;
 import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
+import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Widget;
 
 import javax.swing.*;
@@ -16,10 +17,11 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class HistoryOrdersWidget extends Widget<Order> {
 
-  public HistoryOrdersWidget(Order data) {
-    super(data);
+  public HistoryOrdersWidget(Order data, Page page) {
+    super(data,page);
   }
 
 
@@ -35,13 +37,17 @@ public class HistoryOrdersWidget extends Widget<Order> {
     panelInfo.setBackground(Color.WHITE);
 
     JLabel lblName = new JLabel();
-    lblName.setText("Nombre de la Tienda: " + data.getStore().getName());
+    lblName.setText(parentPage.getString("historyorderspage.store's_name") + data.getStore().getName());
     JLabel lblTotalProduct = new JLabel();
-    lblTotalProduct.setText("Total de productos: " + data.getProduct().size());
+    lblTotalProduct.setText(parentPage.getString("historyorderspage.total_products") + data.getProduct().size());
     JLabel lblTotalOrder = new JLabel(NumberFormat.getCurrencyInstance().format(data.getTotalValue()));
     JLabel lblDate = new JLabel(SimpleDateFormat.getDateInstance().format(data.getDate()));
 
-    JButton jButton = new JButton("SEE");
+    JButton jButton = new JButton();
+    jButton.setIcon(new ImageIcon(ImageUtil.class.getClassLoader().getResource("images/ver.png")));
+    jButton.setBorder(BorderFactory.createEmptyBorder(6,10,6,10));
+    jButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    jButton.setBackground(new Color(88, 214, 141 ));
 
     panelInfo.add(lblName);
     panelInfo.add(lblTotalProduct);
