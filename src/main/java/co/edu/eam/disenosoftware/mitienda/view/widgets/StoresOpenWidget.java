@@ -4,7 +4,10 @@ import co.edu.eam.disenosoftware.mitienda.config.Constants;
 import co.edu.eam.disenosoftware.mitienda.model.entities.Store;
 import co.edu.eam.disenosoftware.mitienda.util.ImageUtil;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
+import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Widget;
+import co.edu.eam.disenosoftware.mitienda.view.pages.StoreHomePage;
+import co.edu.eam.disenosoftware.mitienda.view.pages.StoresOpenPage;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,8 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StoresOpenWidget extends Widget<Store> {
-  public StoresOpenWidget(Store data) {
-    super(data);
+  public StoresOpenWidget(Store data, Page page) {
+    super(data,page);
   }
 
   @Override
@@ -68,13 +71,15 @@ public class StoresOpenWidget extends Widget<Store> {
 
     this.setBackground(new Color(255, 255, 255));
 
+    this.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
     this.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent e) {
         super.mouseClicked(e);
         Map<String, Object> params = new HashMap<>();
         params.put("storeId", data.getId());
-        Navigator.goToFrame("StoreHomePage", params);
+        parentPage.goToFrame("StoreHomePage", params);
       }
     });
 

@@ -12,8 +12,24 @@ public abstract class Widget<D> extends JPanel {
    */
   protected D data;
 
+  /**
+   * parente page.
+   */
+  protected Page parentPage;
+
   public Widget(D data) {
     this.data = data;
+    build();
+  }
+
+  /**
+   * constructor
+   * @param data
+   * @param parentPage
+   */
+  public Widget(D data, Page parentPage) {
+    this.data = data;
+    this.parentPage = parentPage;
     build();
   }
 
