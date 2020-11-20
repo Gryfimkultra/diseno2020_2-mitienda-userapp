@@ -5,6 +5,7 @@ import co.edu.eam.disenosoftware.mitienda.model.entities.Order;
 import co.edu.eam.disenosoftware.mitienda.util.ImageUtil;
 import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
+import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Widget;
 
 import javax.swing.*;
@@ -14,14 +15,13 @@ import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
-import java.util.ResourceBundle;
+
 
 public class HistoryOrdersWidget extends Widget<Order> {
 
-  public HistoryOrdersWidget(Order data) {
-    super(data);
+  public HistoryOrdersWidget(Order data, Page page) {
+    super(data,page);
   }
 
 
@@ -36,13 +36,10 @@ public class HistoryOrdersWidget extends Widget<Order> {
     panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.Y_AXIS));
     panelInfo.setBackground(Color.WHITE);
 
-    Locale defaultLocale = Locale.getDefault();
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("messages", defaultLocale);
-
     JLabel lblName = new JLabel();
-    lblName.setText(resourceBundle.getString("historyorderspage.store's_name") + data.getStore().getName());
+    lblName.setText(parentPage.getString("historyorderspage.store's_name") + data.getStore().getName());
     JLabel lblTotalProduct = new JLabel();
-    lblTotalProduct.setText(resourceBundle.getString("historyorderspage.total_products") + data.getProduct().size());
+    lblTotalProduct.setText(parentPage.getString("historyorderspage.total_products") + data.getProduct().size());
     JLabel lblTotalOrder = new JLabel(NumberFormat.getCurrencyInstance().format(data.getTotalValue()));
     JLabel lblDate = new JLabel(SimpleDateFormat.getDateInstance().format(data.getDate()));
 

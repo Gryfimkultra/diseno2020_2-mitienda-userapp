@@ -52,13 +52,13 @@ public class HistoryOrdersPage extends Page {
 
     for (Order order : orderList) {
       if (order.getState().equals("created")) {
-        HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order);
+        HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order,this);
         panelUser1.add(wdgt);
       } else if (order.getState().equals("finished")) {
-        HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order);
+        HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order,this);
         panelUser2.add(wdgt);
       } else if (order.getState().equals("canceled")) {
-        HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order);
+        HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order,this);
         panelUser3.add(wdgt);
       }
     }
