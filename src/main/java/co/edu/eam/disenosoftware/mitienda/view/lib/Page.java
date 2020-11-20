@@ -157,7 +157,7 @@ public abstract class Page extends JFrame {
     menuHistory.setText("Historial");
     menuHistory.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        goToFrame("History");
+        goToFrame("HistoryOrdersPage");
       }
     });
     menu.add(menuHistory);
