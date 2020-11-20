@@ -55,7 +55,7 @@ public class HistoryOrdersPage extends Page {
       if (order.getState().equals("created")) {
         HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order,this);
         panelUser1.add(wdgt);
-      } else if (order.getState().equals("finished")) {
+      } else if (order.getState().equals("finished")  || order.getState().equals("delivered")) {
         HistoryOrdersWidget wdgt = new HistoryOrdersWidget(order,this);
         panelUser2.add(wdgt);
       } else if (order.getState().equals("canceled")) {
