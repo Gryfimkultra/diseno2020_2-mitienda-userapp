@@ -29,6 +29,8 @@ public class RegisterUserPage extends Page {
 
     JTextField userName = new JTextField("");
     userName.setBorder(null);
+    JTextField name = new JTextField("");
+    name.setBorder(null);
     JTextField emailAddress = new JTextField("");
     emailAddress.setBorder(null);
     JTextField phone = new JTextField("");
@@ -40,11 +42,13 @@ public class RegisterUserPage extends Page {
     TextPrompt placePassword = new TextPrompt(getString("userregisterpage.password"), password);
     TextPrompt placePhone = new TextPrompt(getString("userregisterpage.phone"), phone);
     TextPrompt placeEmail = new TextPrompt(getString("userregisterpage.email"), emailAddress);
+    TextPrompt placeName = new TextPrompt(getString("userregisterpage.name"), name);
 
     JSeparator line1 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line2 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line3 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line4 = new JSeparator(SwingConstants.HORIZONTAL);
+    JSeparator line5 = new JSeparator(SwingConstants.HORIZONTAL);
 
     JButton buttonSignIn = new JButton(getString("userregisterpage.buttonsignup"));
     buttonSignIn.setOpaque(true);
@@ -58,10 +62,12 @@ public class RegisterUserPage extends Page {
     scrollPane.add(emailAddress);
     scrollPane.add(phone);
     scrollPane.add(password);
+    scrollPane.add(name);
     scrollPane.add(line1);
     scrollPane.add(line2);
     scrollPane.add(line3);
     scrollPane.add(line4);
+    scrollPane.add(line5);
     scrollPane.add(buttonSignIn);
 
     tittle.setLocation(22, 10);
@@ -82,6 +88,9 @@ public class RegisterUserPage extends Page {
     password.setLocation(22, 340);
     password.setSize(300, 20);
 
+    name.setLocation(22, 410);
+    name.setSize(300, 20);
+
     line1.setLocation(22, 150);
     line1.setSize(300, 20);
 
@@ -94,14 +103,17 @@ public class RegisterUserPage extends Page {
     line4.setLocation(22, 360);
     line4.setSize(300, 20);
 
-    buttonSignIn.setLocation(217, 400);
+    line5.setLocation(22, 430);
+    line5.setSize(300, 20);
+
+    buttonSignIn.setLocation(217, 470);
     buttonSignIn.setSize(100, 40);
 
     buttonSignIn.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         UserRegistreController userRegistreController = new UserRegistreController();
 
-        User user = new User(userName.getText(), phone.getText(), emailAddress.getText(), password.getText());
+        User user = new User(userName.getText(), phone.getText(), emailAddress.getText(), password.getText(), name.getText());
 
         userRegistreController.userRegister(user);
 
