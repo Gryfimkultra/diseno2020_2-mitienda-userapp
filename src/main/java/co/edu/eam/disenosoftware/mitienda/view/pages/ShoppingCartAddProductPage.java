@@ -1,6 +1,7 @@
 package co.edu.eam.disenosoftware.mitienda.view.pages;
 
 import co.edu.eam.disenosoftware.mitienda.config.Constants;
+import co.edu.eam.disenosoftware.mitienda.model.entities.Product;
 import co.edu.eam.disenosoftware.mitienda.model.entities.ProductStore;
 import co.edu.eam.disenosoftware.mitienda.util.ImageUtil;
 import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
@@ -10,6 +11,11 @@ import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.NumberFormat;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 public class ShoppingCartAddProductPage extends Page {
 
@@ -17,16 +23,20 @@ public class ShoppingCartAddProductPage extends Page {
   ProductStore productStore;
   int quantity;
   Long userId;
+  ResourceBundle resourceBundle;
+  NumberFormat formatter;
 
   @Override
   public void init() {
     controller = new ShoppingCartAddProductControllers();
 
-    productStore = LocalStorage.getData("productStore", ProductStore.class);
+    productStore = (ProductStore) getParam("product");
 
     userId = LocalStorage.getData("userId", Long.class);
 
     quantity = 0;
+
+    formatter = NumberFormat. getCurrencyInstance();
   }
 
   @Override
@@ -63,7 +73,8 @@ public class ShoppingCartAddProductPage extends Page {
     lblNombre.setFont(new Font(lblNombre.getFont().getFontName(), Font.BOLD, 20));
     lblNombre.setBorder(BorderFactory.createMatteBorder(10, 10, 5, 10, Color.WHITE));
 
-    JLabel lblPrecio = new JLabel("$" + productStore.getPrice());
+    String moneyString =formatter. format(productStore.getPrice());
+    JLabel lblPrecio = new JLabel(moneyString);
     lblPrecio.setOpaque(true);
     lblPrecio.setBackground(Color.WHITE);
     lblPrecio.setFont(new Font(lblPrecio.getFont().getFontName(), Font.BOLD, 20));
@@ -74,7 +85,7 @@ public class ShoppingCartAddProductPage extends Page {
     panelCantidad.setPreferredSize(new Dimension(334, 300));
     panelCantidad.setMaximumSize(new Dimension(334, 300));
 
-    JLabel lblQuantity = new JLabel("Quantity");
+    JLabel lblQuantity = new JLabel(getString("shoppingcartaddpage.quantity"));
     lblQuantity.setFont(new Font(lblQuantity.getFont().getFontName(), Font.BOLD, 20));
     lblQuantity.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -152,7 +163,7 @@ public class ShoppingCartAddProductPage extends Page {
     panel.setPreferredSize(new Dimension(500, panel.getPreferredSize().height));
     panel.setMaximumSize(new Dimension(500, 50));
 
-    JLabel label = new JLabel("Agregar al Carrito");
+    JLabel label = new JLabel(getString("shoppingcartaddpage.addtoshoppingcart"));
     label.setForeground(Color.WHITE);
     label.setFont(new Font(label.getFont().getFontName(), Font.BOLD, 20));
 
@@ -175,6 +186,8 @@ public class ShoppingCartAddProductPage extends Page {
   }
 
   public void returnStore() {
-    Navigator.goToFrame("StoreHomePage");
+    Map<String, Object> params = new HashMap<>();
+    params.put("storeId", productStore.getStore().getId());
+    goToFrame("StoreHomePage", params);
   }
 }

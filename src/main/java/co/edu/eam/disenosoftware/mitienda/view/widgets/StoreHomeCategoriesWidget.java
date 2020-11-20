@@ -12,11 +12,8 @@ import java.awt.*;
 
 public class StoreHomeCategoriesWidget extends Widget<Category> {
 
-  Page page;
-
   public StoreHomeCategoriesWidget(Category data, Page page) {
-    super(data);
-    this.page = page;
+    super(data, page);
   }
 
   @Override
@@ -45,13 +42,8 @@ public class StoreHomeCategoriesWidget extends Widget<Category> {
   }
 
   public void category(Long id) {
-
     LocalStorage.saveData("searchCategory", id);
-    try {
-      page.refresh();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    parentPage.refresh();
 
   }
 }

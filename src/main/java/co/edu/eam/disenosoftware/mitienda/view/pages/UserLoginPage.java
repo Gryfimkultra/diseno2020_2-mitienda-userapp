@@ -2,7 +2,6 @@ package co.edu.eam.disenosoftware.mitienda.view.pages;
 
 import co.edu.eam.disenosoftware.mitienda.model.request.UserLoginRequest;
 import co.edu.eam.disenosoftware.mitienda.view.controllers.UserLoginController;
-import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.widgets.TextPrompt;
 
@@ -10,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 public class UserLoginPage extends Page {
 
   @Override
@@ -26,21 +24,20 @@ public class UserLoginPage extends Page {
     scrollPane.setLayout(null);
     scrollPane.setBackground(Color.white);
 
-    JLabel tittle = new JLabel("<html><h1><strong>Sign in to Grocery App</strong></h1></html>");
-    JLabel description = new JLabel(("<html><h3><font color='gray'><strong>Enter email & password to continue</strong></font></h3></html>"));
-    JLabel forgot = new JLabel(("<html><h3><font color='gray'><strong>¿Forgot password?</strong></font></h3></html>"));
+    JLabel tittle = new JLabel("<html><h2><strong>" + getString("userloginpage.title") + "</strong></h2></html>");
+    JLabel description = new JLabel(("<html><h3><font color='gray'><strong>" + getString("userloginpage.description") + "</strong></font></h3></html>"));
 
     JTextField userName = new JTextField("");
     userName.setBorder(null);
     JPasswordField password = new JPasswordField("");
     password.setBorder(null);
 
-    TextPrompt placeUser = new TextPrompt("User Name", userName);
-    TextPrompt placePassword = new TextPrompt("Password", password);
+    TextPrompt placeUser = new TextPrompt(getString("userloginpage.username"), userName);
+    TextPrompt placePassword = new TextPrompt(getString("userloginpage.password"), password);
     JSeparator line1 = new JSeparator(SwingConstants.HORIZONTAL);
     JSeparator line2 = new JSeparator(SwingConstants.HORIZONTAL);
 
-    JButton buttonSignIn = new JButton("SIGN IN");
+    JButton buttonSignIn = new JButton(getString("userloginpage.buttonsignin"));
     buttonSignIn.setOpaque(true);
     buttonSignIn.setBorderPainted(false);
     buttonSignIn.setBackground(new Color(95, 144, 81).brighter());
@@ -52,7 +49,6 @@ public class UserLoginPage extends Page {
     scrollPane.add(password);
     scrollPane.add(line1);
     scrollPane.add(line2);
-    scrollPane.add(forgot);
     scrollPane.add(buttonSignIn);
 
     buttonSignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +57,10 @@ public class UserLoginPage extends Page {
 
         UserLoginRequest userLoginRequest = new UserLoginRequest(userName.getText(), password.getText());
         userLoginController.userLogin(userLoginRequest);
+
+        JOptionPane.showMessageDialog(null, getString("userloginpage.userloggedin"));
+
+        goToFrame("StoresOpenPage");
       }
     });
 
@@ -82,9 +82,6 @@ public class UserLoginPage extends Page {
     line2.setLocation(22, 220);
     line2.setSize(300, 20);
 
-    forgot.setLocation(22, 265);
-    forgot.setSize(200, 20);
-
     buttonSignIn.setLocation(217, 255);
     buttonSignIn.setSize(100, 40);
 
@@ -100,15 +97,12 @@ public class UserLoginPage extends Page {
 
     panel.setMaximumSize(new Dimension(500, 200));
 
-    JLabel signIn = new JLabel("<html><font color='green'><strong>Sign in</strong></font></html>");
-    JLabel signUp = new JLabel("<html>Sign up</html>");
+    JLabel signIn = new JLabel("<html><font color='green'><strong>" + getString("userloginpage.singin") + "</strong></font></html>");
+    JLabel signUp = new JLabel("<html>" + getString("userloginpage.singup") + "</html>");
 
     signUp.addMouseListener(new MouseAdapter() {
       public void mouseClicked(MouseEvent e) {
-
-        Navigator.goToFrame("RegisterUserPage");
-        dispose();
-
+        goToFrame("RegisterUserPage");
       }
     });
 
