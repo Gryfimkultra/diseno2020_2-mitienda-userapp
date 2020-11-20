@@ -11,6 +11,7 @@ import co.edu.eam.disenosoftware.mitienda.view.widgets.ShoppingCartDetailWidget;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +20,7 @@ public class ShoppingCartPage extends Page {
   private ShoppingCartController controller;
   private ShoppingCart shoppingCart;
 
+
   public ShoppingCartPage() {
     controller = new ShoppingCartController();
   }
@@ -26,11 +28,10 @@ public class ShoppingCartPage extends Page {
   @Override
   public void init() {
     controller = new ShoppingCartController();
-    Long storeId = LocalStorage.getData("storeId", Long.class);
+    Long storeId = (Long) getParam("storeId");
     Long userId = LocalStorage.getData("userId", Long.class);
-
     this.shoppingCart = controller.getShoppingCard(storeId, userId);
-    System.out.println(shoppingCart.getId());
+
   }
 
   @Override
@@ -40,27 +41,28 @@ public class ShoppingCartPage extends Page {
     JPanel panelFlowScrollProduct = new javax.swing.JPanel();
     JPanel panelGridScrollProduct = new javax.swing.JPanel();
 
-    panelGridScrollProduct.setLayout(new java.awt.GridLayout(this.shoppingCart.getProduct().size() / 2, 2, 5, 5));
+    if(this.shoppingCart!=null){
+      panelGridScrollProduct.setLayout(new java.awt.GridLayout(this.shoppingCart.getProduct().size() / 2, 2, 5, 5));
+      for (ShoppingCartProduct shoppingCartProduct : this.shoppingCart.getProduct()) {
 
-    for (ShoppingCartProduct shoppingCartProduct : this.shoppingCart.getProduct()) {
-
-      if (shoppingCartProduct != null) {
         ShoppingCartDetailWidget wdgt = new ShoppingCartDetailWidget(shoppingCartProduct, shoppingCart.getId(), this);
         panelGridScrollProduct.add(wdgt);
-      } else {
-        System.out.println("Empty");
       }
+      panelFlowScrollProduct.add(panelGridScrollProduct);
+      JScrollPane scrollPane = new JScrollPane(panelFlowScrollProduct);
 
+      return scrollPane;
+
+    }else{
+      JOptionPane.showMessageDialog(null,getString("shoppingcartpage.nullshoppingpro"));
+      this.goBack();
+      return null;
     }
-    panelFlowScrollProduct.add(panelGridScrollProduct);
-    JScrollPane scrollPane = new JScrollPane(panelFlowScrollProduct);
-
-    return scrollPane;
   }
 
   @Override
   public JComponent buildHeader() {
-
+    NumberFormat formatter = NumberFormat. getCurrencyInstance();
     JPanel panelHeader = new javax.swing.JPanel();
     JLabel lblHeader = new javax.swing.JLabel();
     JLabel lblTotalValue = new javax.swing.JLabel();
@@ -69,20 +71,18 @@ public class ShoppingCartPage extends Page {
     panelHeader.setBackground(Constants.COLOR_GREEN);
 
     lblHeader.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-    lblHeader.setText("ShoppingCart");
+    lblHeader.setText(getString("shoppingcartpage.shoppingcart"));
 
     lblHeader.setForeground(new Color(255, 255, 255));
 
-    lblTotalValue.setText("Total: " + this.shoppingCart.getTotalValue());
+    String moneyString =formatter. format(this.shoppingCart.getTotalValue());
 
+    lblTotalValue.setText(getString("shoppingcartpage.total") +" "+ moneyString);
     lblTotalValue.setForeground(new Color(255, 255, 255));
-
     lblTotalProduct.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-
     lblTotalValue.setForeground(new Color(255, 255, 255));
-
     lblTotalProduct.setForeground(new Color(255, 255, 255));
-    lblTotalProduct.setText("Total Products:" + this.shoppingCart.getProduct().size());
+    lblTotalProduct.setText(getString("shoppingcartpage.totalProduct") +" "+ this.shoppingCart.getProduct().size());
 
     javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
     panelHeader.setLayout(panelHeaderLayout);
@@ -123,15 +123,19 @@ public class ShoppingCartPage extends Page {
 
     panelBuyNow.setLayout(new GridLayout(1, 0));
 
-    JButton btnBuyNow = new JButton(" Buy Now ");
+    JButton btnBuyNow = new JButton(getString("shoppingcartpage.buynow"));
     panelBuyNow.add(btnBuyNow);
     btnBuyNow.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         controller.createOrden(shoppingCart.getId());
 
         Map<String, Object> params = new HashMap<>();
+        params.put("storeId", shoppingCart.getStore().getId());
 
-        Navigator.goToFrame("HistoryOrdersPage");
+        LocalStorage.saveData("storeId", shoppingCart.getStore().getId());
+
+        goToFrame("HistoryOrdersPage", params);
+
       }
     });
     panelBuyNow.setPreferredSize(new Dimension(panelBuyNow.getPreferredSize().width, 50));

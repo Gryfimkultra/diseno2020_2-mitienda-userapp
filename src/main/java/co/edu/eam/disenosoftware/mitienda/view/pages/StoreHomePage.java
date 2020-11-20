@@ -7,7 +7,6 @@ import co.edu.eam.disenosoftware.mitienda.util.ImageUtil;
 import co.edu.eam.disenosoftware.mitienda.util.LocalStorage;
 import co.edu.eam.disenosoftware.mitienda.view.controllers.StoreHomeController;
 import co.edu.eam.disenosoftware.mitienda.view.lib.ListView;
-import co.edu.eam.disenosoftware.mitienda.view.lib.Navigator;
 import co.edu.eam.disenosoftware.mitienda.view.lib.Page;
 import co.edu.eam.disenosoftware.mitienda.view.widgets.StoreHomeCategoriesWidget;
 import co.edu.eam.disenosoftware.mitienda.view.widgets.StoreHomeProductWidget;
@@ -25,7 +24,7 @@ public class StoreHomePage extends Page {
   List<Category> categories;
   List<ProductStore> productStores;
   Long searchCategory;
-
+  Long storeId;
   @Override
   public void init() {
 
@@ -33,7 +32,7 @@ public class StoreHomePage extends Page {
 
     searchCategory = LocalStorage.getData("searchCategory", Long.class);
 
-    Long storeId = LocalStorage.getData("storeId", Long.class);
+    storeId = (Long) getParam("storeId");
 
     this.categories = controller.getStoreCategories(storeId);
     this.productStores = controller.getProductsStore(storeId);
@@ -59,7 +58,6 @@ public class StoreHomePage extends Page {
       StoreHomeCategoriesWidget widget = new StoreHomeCategoriesWidget(category, this);
       categoriesPanel.add(widget);
     }
-
     JScrollPane categoriesScrollPane = new JScrollPane(categoriesPanel);
     categoriesScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
     categoriesScrollPane.setBackground(Constants.COLOR_GREEN);
@@ -86,8 +84,8 @@ public class StoreHomePage extends Page {
           }
         }
         ListView<JComponent> listViewHorizontal = new ListView(productWidgetsHorizontal, ListView.ListViewOrientation.HORIZONTAL);
-        listViewHorizontal.setPreferredSize(new Dimension(320, 270));
-        listViewHorizontal.setMaximumSize(new Dimension(320, 270));
+        listViewHorizontal.setPreferredSize(new Dimension(320, 175));
+        listViewHorizontal.setMaximumSize(new Dimension(320, 175));
         listViewHorizontal.setBorder(BorderFactory.createTitledBorder(category.getName()));
 
         productWidgetsVertical.add(listViewHorizontal);
@@ -139,11 +137,7 @@ public class StoreHomePage extends Page {
     label.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
         LocalStorage.saveData("searchCategory", null);
-        try {
-          refresh();
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
+        refresh();
       }
     });
 
@@ -152,7 +146,7 @@ public class StoreHomePage extends Page {
     cartIcon.setCursor(new Cursor(Cursor.HAND_CURSOR));
     cartIcon.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
-        shoppingCart(LocalStorage.getData("storeId", Long.class));
+        shoppingCart(storeId);
       }
     });
 
@@ -169,11 +163,9 @@ public class StoreHomePage extends Page {
   public void shoppingCart(Long storeId) {
 
     Map<String, Object> params = new HashMap<>();
-    params.put("storeId", productStores.get(0).getStore().getId());
+    params.put("storeId", storeId);
 
-    LocalStorage.saveData("storeId", productStores.get(0).getStore().getId());
-
-    Navigator.goToFrame("ShoppingCartPage", params);
+    goToFrame("ShoppingCartPage", params);
   }
 
   @Override
